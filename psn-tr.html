@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSN Turkey Cards | ISM STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ps-blue: #003791; /* لون بلايستيشن الرسمي */
+            --primary: #00f7ff;
+            --bg-dark: #07080f;
+            --card-bg: rgba(20, 25, 40, 0.7);
+        }
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: white; overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 50%, rgba(0, 55, 145, 0.15) 0%, transparent 50%);
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* ===== NAVIGATION (متناسق مع الرئيسية) ===== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(7, 8, 15, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 55, 145, 0.3);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-home {
+            color: #fff; text-decoration: none; font-size: 13px;
+            border: 1px solid var(--ps-blue); padding: 8px 18px;
+            border-radius: 20px; transition: 0.3s;
+        }
+
+        .btn-home:hover { background: var(--ps-blue); box-shadow: 0 0 15px var(--ps-blue); }
+
+        /* ===== HEADER ===== */
+        .header { padding: 140px 20px 40px; text-align: center; }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(24px, 5vw, 40px);
+            color: #fff; text-shadow: 0 0 20px rgba(0, 55, 145, 0.8);
+        }
+        .header span { color: var(--ps-blue); }
+
+        /* ===== GIFT CARDS GRID ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px; padding-bottom: 80px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 20px; border-radius: 20px;
+            text-align: center; transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+
+        /* تأثير الخطوط الزرقاء عند تمرير الماوس */
+        .card::before {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
+            background: var(--ps-blue); transform: scaleX(0); transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--ps-blue);
+            box-shadow: 0 10px 30px rgba(0, 55, 145, 0.2);
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        .value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px; font-weight: bold; margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .price {
+            font-size: 22px; color: var(--primary);
+            font-weight: 700; margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-buy {
+            background: transparent; border: 2px solid var(--ps-blue);
+            color: #fff; padding: 12px 30px; border-radius: 30px;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+            width: 85%; text-transform: uppercase;
+        }
+
+        .card:hover .btn-buy { background: var(--ps-blue); border-color: var(--ps-blue); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px; background: #030408; text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05); color: #555;
+        }
+
+        /* ===== MESSENGER ===== */
+        .messenger {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #0084ff; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+            transition: 0.4s; z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ISM STORE</a>
+    <a href="index.html" class="btn-home">BACK HOME</a>
+</nav>
+
+<section class="header">
+    <div class="container">
+        <h1>🇹🇷 PSN Turkey Gift Cards</h1>
+        <p style="color: #666; font-size: 14px; letter-spacing: 1px;">INSTANT CODE DELIVERY FOR TR REGION</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="grid">
+        <div class="card">
+            <div class="value">250 TL</div>
+            <div class="price">32 DT</div>
+            <button class="btn-buy" onclick="order('250 TL')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <div class="value">500 TL</div>
+            <div class="price">60 DT</div>
+            <button class="btn-buy" onclick="order('500 TL')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <div class="value">750 TL</div>
+            <div class="price">85 DT</div>
+            <button class="btn-buy" onclick="order('750 TL')">ORDER NOW</button>
+        </div>
+
+        <div class="card" style="border-color: var(--primary);">
+            <div style="position:absolute; top:12px; right:12px; background:var(--primary); color:#000; font-size:9px; padding:3px 10px; border-radius:5px; font-weight:bold;">BEST SELLER</div>
+            <div class="value">1000 TL</div>
+            <div class="price">110 DT</div>
+            <button class="btn-buy" onclick="order('1000 TL')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <div class="value">1500 TL</div>
+            <div class="price">155 DT</div>
+            <button class="btn-buy" onclick="order('1500 TL')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <div class="value">2000 TL</div>
+            <div class="price">200 DT</div>
+            <button class="btn-buy" onclick="order('2000 TL')">ORDER NOW</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 ISM Game Store — Official PSN Reseller</p>
+</footer>
+
+<a class="messenger" href="https://m.me/61555974173704" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
+</a>
+
+<script>
+    function order(value) {
+        let msg = encodeURIComponent("مرحباً ISM Store، أريد طلب كرت بلايستيشن تركي بقيمة: " + value);
+        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+    }
+</script>
+
+</body>
+</html>

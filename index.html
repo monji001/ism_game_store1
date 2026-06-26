@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ISM Game Store | Digital Marketplace</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#00f7ff;
+--accent:#7000ff;
+--bg-dark:#07080f;
+--card-bg:rgba(20,25,40,0.75);
+}
+
+/* ===== GLOBAL ===== */
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:var(--bg-dark);
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== LOADER ===== */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#07080f;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+transition:0.5s;
+}
+
+.loader-circle{
+width:55px;
+height:55px;
+border:3px solid transparent;
+border-top-color:var(--primary);
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+/* ===== BACKGROUND ===== */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+opacity:0.5;
+}
+
+/* ===== NAVBAR ===== */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(7,8,15,0.85);
+backdrop-filter:blur(14px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:1.5rem;
+font-weight:bold;
+color:var(--primary);
+text-shadow:0 0 15px rgba(0,247,255,0.5);
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+margin-left:22px;
+font-size:13px;
+letter-spacing:1px;
+transition:0.3s;
+opacity:0.85;
+}
+
+.menu a:hover{
+color:var(--primary);
+opacity:1;
+text-shadow:0 0 10px var(--primary);
+}
+
+/* ===== HERO ===== */
+
+.hero{
+padding:180px 20px 100px;
+text-align:center;
+background:radial-gradient(circle at center,
+rgba(112,0,255,0.15) 0%,
+transparent 70%);
+}
+
+.hero p{
+color:#bbb;
+letter-spacing:2px;
+font-size:14px;
+}
+
+.hero h1{
+font-family:'Orbitron',sans-serif;
+font-size:clamp(35px,8vw,70px);
+margin:15px 0;
+background:linear-gradient(90deg,#00f7ff,#7000ff,#00f7ff);
+background-size:200% auto;
+-webkit-background-clip:text;
+color:transparent;
+animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+to{
+background-position:200% center;
+}
+}
+
+.counter-box{
+margin-top:25px;
+}
+
+.counter{
+font-size:4rem;
+font-family:'Orbitron',sans-serif;
+font-weight:bold;
+color:var(--primary);
+}
+
+/* ===== SECTION ===== */
+
+.section{
+padding:70px 5%;
+max-width:1300px;
+margin:auto;
+}
+
+.section h2{
+font-family:'Orbitron',sans-serif;
+font-size:2rem;
+margin-bottom:35px;
+border-left:4px solid var(--primary);
+padding-left:15px;
+}
+
+/* ===== GRID ===== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+/* ===== CARD ===== */
+
+.card{
+position:relative;
+height:260px;
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+transition:0.4s;
+background:#111;
+border:1px solid rgba(255,255,255,0.06);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 10px 40px rgba(0,247,255,0.25);
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+}
+
+.card-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.25));
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:22px;
+}
+
+.card h3{
+margin:0;
+font-size:24px;
+}
+
+.card p{
+margin-top:8px;
+font-size:14px;
+line-height:1.5;
+color:#ddd;
+}
+
+.btn-view{
+margin-top:15px;
+width:fit-content;
+padding:10px 18px;
+border:none;
+border-radius:30px;
+background:var(--primary);
+color:black;
+font-weight:bold;
+font-size:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-view:hover{
+background:white;
+transform:scale(1.05);
+}
+
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+padding:6px 12px;
+border-radius:30px;
+font-size:11px;
+font-weight:bold;
+background:rgba(0,247,255,0.95);
+color:black;
+z-index:5;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+padding:50px 20px;
+background:#030408;
+text-align:center;
+margin-top:60px;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+footer p{
+color:#777;
+}
+
+/* ===== MESSENGER ===== */
+
+.messenger{
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+border-radius:50%;
+background:#0084ff;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 10px 25px rgba(0,132,255,0.4);
+transition:0.4s;
+z-index:1000;
+}
+
+.messenger:hover{
+transform:scale(1.12);
+}
+
+@media(max-width:768px){
+
+.menu a{
+margin-left:12px;
+font-size:11px;
+}
+
+.hero{
+padding-top:160px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== LOADER ===== -->
+
+<div id="loader">
+<div class="loader-circle"></div>
+<div class="logo">ISM STORE</div>
+</div>
+
+<!-- ===== BACKGROUND ===== -->
+
+<canvas id="bg"></canvas>
+
+<!-- ===== NAVBAR ===== -->
+
+<nav>
+
+<div class="logo">ISM STORE</div>
+
+<div class="menu">
+<a href="#games">Games</a>
+<a href="#subs">Subscriptions</a>
+<a href="#gift">Gift Cards</a>
+<a href="#internet">Internet</a>
+</div>
+
+</nav>
+
+<!-- ===== HERO ===== -->
+
+<section class="hero">
+
+<p>FAST • SAFE • EASY</p>
+
+<h1>TOP UP & DIGITAL SERVICES</h1>
+
+<div class="counter-box">
+<span class="counter" id="counter">0</span>
+<span class="counter">+</span>
+
+<p style="color:#888;font-size:14px;">
+Happy Clients & Trusted Services
+</p>
+
+</div>
+
+</section>
+
+<!-- ===== GAMES ===== -->
+
+<section class="section" id="games">
+
+<h2>Games & Top Up</h2>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='efootball.html'">
+
+<div class="badge" style="background:#ffcc00;">HOT</div>
+
+<img src="https://i.imgur.com/vPf6srS.png">
+
+<div class="card-overlay">
+
+<h3>eFootball Coins</h3>
+
+<p>
+Top up coins بسرعة ⚽<br>
+شحن سريع و مضمون
+</p>
+
+<button class="btn-view">VIEW PRICES</button>
+
+</div>
+</div>
+
+<div class="card" onclick="location.href='pubg.html'">
+
+<div class="badge">BEST</div>
+
+<img src="https://i.imgur.com/v2qeN9S.png">
+
+<div class="card-overlay">
+
+<h3>PUBG Mobile UC</h3>
+
+<p>
+UC instant delivery 🔥<br>
+خدمة سريعة و آمنة
+</p>
+
+<button class="btn-view">VIEW PRICES</button>
+
+</div>
+</div>
+
+<div class="card" onclick="location.href='freefire.html'">
+
+<img src="https://i.imgur.com/Wl4y0kw.png">
+
+<div class="card-overlay">
+
+<h3>Free Fire Diamonds</h3>
+
+<p>
+Recharge diamonds 💎<br>
+شحن مباشر للحساب
+</p>
+
+<button class="btn-view">VIEW PRICES</button>
+
+</div>
+</div>
+
+<div class="card" onclick="location.href='tiktok.html'">
+
+<img src="https://i.imgur.com/MddcCf0.png">
+
+<div class="card-overlay">
+
+<h3>TikTok Coins</h3>
+
+<p>
+Recharge TikTok coins 🎵<br>
+لللايفات و الهدايا
+</p>
+
+<button class="btn-view">VIEW PRICES</button>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== SUBSCRIPTIONS ===== -->
+
+<section class="section" id="subs">
+
+<h2>Subscriptions</h2>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='psplus.html'">
+
+<div class="badge">PLAYSTATION</div>
+
+<img src="https://i.imgur.com/cUBynDm.png">
+
+<div class="card-overlay">
+
+<h3>PlayStation Plus</h3>
+
+<p>
+PS Plus Essential / Deluxe 🎮<br>
+اشتراكات أصلية بأسعار ممتازة
+</p>
+
+<button class="btn-view">VIEW PLANS</button>
+
+</div>
+</div>
+
+<div class="card" onclick="location.href='netflix.html'">
+
+<img src="https://i.imgur.com/3sCUx6U.png">
+
+<div class="card-overlay">
+
+<h3>Netflix Premium</h3>
+
+<p>
+4K Ultra HD 🍿<br>
+مشاهدة بدون تقطيع
+</p>
+
+<button class="btn-view">VIEW PLANS</button>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== GIFT CARDS ===== -->
+
+<section class="section" id="gift">
+
+<h2>Gift Cards</h2>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='psn-tr.html'">
+
+<div class="badge">TR STORE</div>
+
+<img src="blob:https://imgur.com/a/oqB77Xz#0bsNyXC">
+
+<div class="card-overlay">
+
+<h3>PSN Turkey Cards</h3>
+
+<p>
+ستور تركي 🇹🇷<br>
+أسعار ممتازة و تسليم سريع
+</p>
+
+<button class="btn-view">VIEW PRICES</button>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== INTERNET ===== -->
+
+<section class="section" id="internet">
+
+<h2>Internet Recharge</h2>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='internet.html'">
+
+<div class="badge">FAST</div>
+
+<img src="https://i.imgur.com/nfNby6B.png">
+
+<div class="card-overlay">
+
+<h3>Ooredoo & Orange</h3>
+
+<p>
+شحن إنترنت تونس 📡<br>
+سريع و متوفر طول الوقت
+</p>
+
+<button class="btn-view">DISCOVER</button>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+
+<div class="logo" style="font-size:1rem;margin-bottom:10px;">
+ISM STORE
+</div>
+
+<p>
+© 2026 ISM Game Store
+</p>
+
+</footer>
+
+<!-- ===== MESSENGER ===== -->
+
+<a class="messenger"
+href="https://m.me/61555974173704"
+target="_blank">
+
+<svg width="30" height="30"
+viewBox="0 0 24 24"
+fill="white">
+
+<path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/>
+
+</svg>
+
+</a>
+
+<script>
+
+/* ===== LOADER ===== */
+
+window.onload=()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity="0";
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.display="none";
+
+},500);
+
+},1000);
+
+}
+
+/* ===== COUNTER ===== */
+
+let count=0;
+
+const counter=document.getElementById("counter");
+
+const target=999;
+
+function updateCounter(){
+
+const increment=target/80;
+
+if(count<target){
+
+count+=increment;
+
+counter.innerText=Math.ceil(count);
+
+setTimeout(updateCounter,25);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+}
+
+updateCounter();
+
+/* ===== PARTICLES ===== */
+
+const canvas=document.getElementById("bg");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speed:Math.random()*0.5+0.1
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(0,247,255,0.25)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+
+ctx.fill();
+
+p.y-=p.speed;
+
+if(p.y<0){
+
+p.y=canvas.height;
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+</body>
+</html>

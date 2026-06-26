@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Plus Ukraine | ISM STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ps-blue: #003791;
+            --primary: #00f7ff;
+            --essential: #e3e3e3;
+            --extra: #ffc400;
+            --deluxe: #7000ff;
+            --bg-dark: #07080f;
+            --card-bg: rgba(20, 25, 40, 0.7);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: white; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 10%, rgba(0, 55, 145, 0.1) 0%, transparent 60%);
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(7, 8, 15, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-home {
+            color: #fff; text-decoration: none; font-size: 13px;
+            border: 1px solid var(--ps-blue); padding: 8px 18px;
+            border-radius: 20px; transition: 0.3s;
+        }
+
+        .btn-home:hover { background: var(--ps-blue); box-shadow: 0 0 15px var(--ps-blue); }
+
+        /* ===== HEADER ===== */
+        .header { padding: 140px 20px 40px; text-align: center; }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(24px, 5vw, 40px);
+            color: #fff; text-shadow: 0 0 20px rgba(0, 55, 145, 0.6);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section-title {
+            display: flex; align-items: center; gap: 15px;
+            margin: 50px 0 25px; font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem; letter-spacing: 2px;
+        }
+        .line { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+        /* ===== GRID & CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px; padding-bottom: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px; padding: 35px 20px;
+            text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card h3 { font-size: 20px; margin: 0; color: #fff; }
+        .price { font-size: 26px; margin: 15px 0 25px; color: var(--primary); font-family: 'Orbitron'; font-weight: bold; }
+
+        /* Button Themes */
+        .btn-buy {
+            width: 90%; padding: 12px; border-radius: 30px;
+            border: none; font-weight: bold; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase;
+        }
+
+        /* Essential Color */
+        .essential-card:hover { border-color: var(--essential); box-shadow: 0 5px 20px rgba(227, 227, 227, 0.1); }
+        .btn-essential { background: var(--essential); color: black; }
+
+        /* Extra Color */
+        .extra-card:hover { border-color: var(--extra); box-shadow: 0 5px 20px rgba(255, 196, 0, 0.15); }
+        .btn-extra { background: var(--extra); color: black; }
+
+        /* Deluxe Color */
+        .deluxe-card:hover { border-color: var(--deluxe); box-shadow: 0 5px 20px rgba(112, 0, 255, 0.2); }
+        .btn-deluxe { background: var(--deluxe); color: white; }
+
+        /* ===== FOOTER ===== */
+        footer { padding: 50px; text-align: center; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* ===== MESSENGER ===== */
+        .messenger {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #0084ff; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ISM STORE</a>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <span onclick="toggleLang()" style="cursor:pointer; font-size: 12px; color: var(--primary);">AR | EN</span>
+        <a href="index.html" class="btn-home">HOME</a>
+    </div>
+</nav>
+
+<section class="header">
+    <div class="container">
+        <h1 id="pageTitle">PS Plus Ukraine 🇺🇦</h1>
+        <p style="color: #666; font-size: 14px;">Instant Activation • Region Ukraine</p>
+    </div>
+</section>
+
+<div class="container">
+    
+    <div class="section-title" style="color: var(--essential);">
+        <span>ESSENTIAL</span> <div class="line"></div>
+    </div>
+    <div class="grid">
+        <div class="card essential-card"><h3>1 Month</h3><div class="price">35 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 1 Month')">Order Now</button></div>
+        <div class="card essential-card"><h3>3 Months</h3><div class="price">75 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 3 Months')">Order Now</button></div>
+        <div class="card essential-card"><h3>12 Months</h3><div class="price">150 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 12 Months')">Order Now</button></div>
+    </div>
+
+    <div class="section-title" style="color: var(--extra);">
+        <span>EXTRA</span> <div class="line"></div>
+    </div>
+    <div class="grid">
+        <div class="card extra-card"><h3>1 Month</h3><div class="price">45 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 1 Month')">Order Now</button></div>
+        <div class="card extra-card"><h3>3 Months</h3><div class="price">110 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 3 Months')">Order Now</button></div>
+        <div class="card extra-card"><h3>12 Months</h3><div class="price">230 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 12 Months')">Order Now</button></div>
+    </div>
+
+    <div class="section-title" style="color: var(--deluxe);">
+        <span>DELUXE</span> <div class="line"></div>
+    </div>
+    <div class="grid">
+        <div class="card deluxe-card"><h3>1 Month</h3><div class="price">50 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 1 Month')">Order Now</button></div>
+        <div class="card deluxe-card"><h3>3 Months</h3><div class="price">120 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 3 Months')">Order Now</button></div>
+        <div class="card deluxe-card"><h3>12 Months</h3><div class="price">265 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 12 Months')">Order Now</button></div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 ISM Game Store — Fast & Secure Gaming Services</p>
+</footer>
+
+<a class="messenger" href="https://m.me/61555974173704" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
+</a>
+
+<script>
+    function order(plan) {
+        let msg = encodeURIComponent("مرحباً ISM Store، أريد شحن اشتراك: PS Plus " + plan);
+        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+    }
+
+    let lang = "en";
+    function toggleLang() {
+        const title = document.getElementById("pageTitle");
+        if(lang === "en") {
+            title.innerText = "بلايستيشن بلس أوكرانيا 🇺🇦";
+            lang = "ar";
+        } else {
+            title.innerText = "PS Plus Ukraine 🇺🇦";
+            lang = "en";
+        }
+    }
+</script>
+
+</body>
+</html>
+

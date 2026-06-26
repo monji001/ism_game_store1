@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eFootball Coins | ISM STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --accent: #ffcc00;
+            --promo-color: #7000ff;
+            --bg-dark: #07080f;
+            --card-bg: rgba(20, 25, 40, 0.7);
+        }
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: white; overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(7, 8, 15, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .logo { font-family: 'Orbitron', sans-serif; color: var(--primary); font-weight: bold; font-size: 1.2rem; text-decoration: none; }
+        .btn-back { color: #fff; text-decoration: none; font-size: 13px; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 20px; transition: 0.3s; }
+        .btn-back:hover { background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary); }
+
+        .header { padding: 140px 20px 40px; text-align: center; }
+        .header h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(24px, 5vw, 45px); background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; color: transparent; margin-bottom: 10px; }
+
+        /* ===== SECTIONS TITLES ===== */
+        .section-divider {
+            text-align: center; margin: 60px 0 40px; position: relative;
+        }
+        .section-divider h2 {
+            font-family: 'Orbitron', sans-serif; font-size: 22px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px;
+            display: inline-block; background: var(--bg-dark); padding: 0 20px; position: relative; z-index: 2;
+        }
+        .section-divider.promo h2 { color: var(--accent); }
+        .section-divider.limited-promo h2 { color: #ff3366; text-shadow: 0 0 10px rgba(255, 51, 102, 0.3); }
+        .section-divider::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(0, 247, 255, 0.2); z-index: 1; }
+
+        /* ===== GRID & CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px 20px; border-radius: 25px;
+            text-align: center; transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+
+        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 15px 40px rgba(0, 247, 255, 0.15); }
+        .card.promo-card { border-color: rgba(255, 204, 0, 0.2); }
+        .card.promo-card:hover { border-color: var(--accent); box-shadow: 0 15px 40px rgba(255, 204, 0, 0.15); }
+
+        .card.limited-card { border-color: rgba(255, 51, 102, 0.2); }
+        .card.limited-card:hover { border-color: #ff3366; box-shadow: 0 15px 40px rgba(255, 51, 102, 0.2); }
+
+        .card h3 { font-family: 'Orbitron', sans-serif; font-size: 26px; margin: 0 0 15px; color: #fff; }
+        .coin-icon { color: #ffcc00; font-size: 22px; }
+
+        .price { font-size: 32px; color: var(--primary); font-weight: bold; margin-bottom: 30px; font-family: 'Orbitron', sans-serif; }
+        .card.promo-card .price { color: var(--accent); }
+        .card.limited-card .price { color: #ff3366; }
+
+        /* ===== BUNDLE BREAKDOWN ===== */
+        .bundle-info {
+            font-size: 12px;
+            color: #ffcc00;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            background: rgba(255, 204, 0, 0.05);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 204, 0, 0.3);
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* ===== IN-GAME PACK CONTENTS ===== */
+        .pack-details {
+            font-size: 13px;
+            color: #ccc;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+        body[dir="rtl"] .pack-details { text-align: right; }
+        .pack-details ul { margin: 5px 0 0; padding-left: 20px; }
+        body[dir="rtl"] .pack-details ul { padding-left: 0; padding-right: 20px; }
+
+        /* ===== LIVE TIMER ===== */
+        .countdown-box {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: #ffcc00;
+            background: rgba(255, 204, 0, 0.08);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .card.limited-card .countdown-box {
+            color: #ff3366;
+            background: rgba(255, 51, 102, 0.08);
+            border: 1px solid rgba(255, 51, 102, 0.2);
+        }
+
+        .btn-order {
+            background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 12px 30px; border-radius: 30px;
+            font-weight: bold; cursor: pointer; transition: 0.3s; width: 85%; text-transform: uppercase;
+        }
+        .card:hover .btn-order { background: var(--primary); color: #000; }
+        
+        .card.promo-card .btn-order { border-color: var(--accent); color: var(--accent); }
+        .card.promo-card:hover .btn-order { background: var(--accent); color: #000; }
+
+        .card.limited-card .btn-order { border-color: #ff3366; color: #ff3366; }
+        .card.limited-card:hover .btn-order { background: #ff3366; color: #fff; box-shadow: 0 0 15px #ff3366; }
+
+        footer { padding: 40px; background: #030408; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #555; }
+        .messenger { position: fixed; bottom: 30px; right: 30px; background: #0084ff; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4); transition: 0.4s; z-index: 2000; }
+        .messenger:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ISM STORE</a>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <span onclick="toggleLang()" style="cursor:pointer; font-size: 12px; color: var(--primary);">AR | EN</span>
+        <a href="index.html" class="btn-back">HOME</a>
+    </div>
+</nav>
+
+<section class="header">
+    <div class="container">
+        <p>KONAMI OFFICIAL RECHARGE</p>
+        <h1 id="pageTitle">eFootball Mobile Coins</h1>
+    </div>
+</section>
+
+<div class="container">
+    
+    <div class="section-divider">
+        <h2 id="sectionTitle">Standard Recharge ⚠️</h2>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>130 <span class="coin-icon">🪙</span></h3>
+            <div class="price">6 DT</div>
+            <button class="btn-order" onclick="order('130 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>300 <span class="coin-icon">🪙</span></h3>
+            <div class="price">15 DT</div>
+            <button class="btn-order" onclick="order('300 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>550 <span class="coin-icon">🪙</span></h3>
+            <div class="price">23 DT</div>
+            <button class="btn-order" onclick="order('550 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>750 <span class="coin-icon">🪙</span></h3>
+            <div class="price">28 DT</div>
+            <button class="btn-order" onclick="order('750 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>1040 <span class="coin-icon">🪙</span></h3>
+            <div class="price">38 DT</div>
+            <button class="btn-order" onclick="order('1040 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>2130 <span class="coin-icon">🪙</span></h3>
+            <div class="price">75 DT</div>
+            <button class="btn-order" onclick="order('2130 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>3250 <span class="coin-icon">🪙</span></h3>
+            <div class="price">110 DT</div>
+            <button class="btn-order" onclick="order('3250 Coins Standard Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card" style="border-color: #ff4d4d;">
+            <div style="position:absolute; top:10px; right:10px; background:#ff4d4d; font-size:10px; padding:2px 8px; border-radius:5px;">BEST VALUE</div>
+            <h3>5700 <span class="coin-icon">🪙</span></h3>
+            <div class="price">175 DT</div>
+            <button class="btn-order" onclick="order('5700 Coins Standard Premium Pack')">ORDER NOW</button>
+        </div>
+    </div>
+
+    <div class="section-divider limited-promo">
+        <h2 id="limitedTitle">Limited Special Offers ⏰</h2>
+    </div>
+
+    <div class="grid">
+        <div class="card limited-card">
+            <div class="countdown-box">
+                ⏱️ <span id="timer-nunez">--d --h --m --s</span>
+            </div>
+            <h3 id="packTitleNunez">Starter Set: Darwin Núñez</h3>
+            <div class="pack-details">
+                <span class="pack-label">Contents:</span>
+                <ul>
+                    <li>50 Paid Coins 🪙</li>
+                    <li>Darwin Núñez (CF - 98 Overall) 🇺🇾</li>
+                </ul>
+            </div>
+            <div class="price">5 DT</div>
+            <button class="btn-order" onclick="order('Starter Set: Darwin Núñez Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card limited-card">
+            <div class="countdown-box">
+                ⏱️ <span id="timer-alaba">--d --h --m --s</span>
+            </div>
+            <h3 id="packTitleAlaba">Starter Set: David Alaba</h3>
+            <div class="pack-details">
+                <span class="pack-label">Contents:</span>
+                <ul>
+                    <li>100 Paid Coins 🪙</li>
+                    <li>David Alaba (CB - 98 Overall) 🇦🇹</li>
+                    <li>+ 3 Featured Players</li>
+                </ul>
+            </div>
+            <div class="price">15 DT</div>
+            <button class="btn-order" onclick="order('Starter Set: David Alaba Pack')">ORDER NOW</button>
+        </div>
+
+        <div class="card limited-card">
+            <div class="countdown-box">
+                ⏱️ <span id="timer-mourinho">--d --h --m --s</span>
+            </div>
+            <h3 id="packTitleMourinho">Mourinho Set</h3>
+            <div class="pack-details">
+                <span class="pack-label">Contents:</span>
+                <ul>
+                    <li>150 Paid Coins 🪙</li>
+                    <li>José Mourinho (Manager) 🇵🇹</li>
+                    <li>Heung-min Son (LMF) 🇰🇷</li>
+                    <li>Memphis Depay (AMF) 🇳🇱</li>
+                </ul>
+            </div>
+            <div class="price">22 DT</div>
+            <button class="btn-order" onclick="order('Mourinho Premium Manager Set')">ORDER NOW</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 ISM Game Store — Pro Gaming Services</p>
+</footer>
+
+<a class="messenger" href="https://m.me/61555974173704" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
+</a>
+
+<script>
+    function order(packName) {
+        let message = encodeURIComponent("Hello ISM STORE, I would like to purchase the [" + packName + "] package. Please guide me through the next steps to complete my order.");
+        let url = "https://m.me/61555974173704?text=" + message;
+        window.open(url, '_blank');
+    }
+
+    let lang = "en";
+    
+    const langData = {
+        en: {
+            title: "eFootball Mobile Coins",
+            sectionTitle: "Standard Recharge ⚠️",            limitedTitle: "Limited Special Offers ⏰",
+            nunezTitle: "Starter Set: Darwin Núñez",
+            alabaTitle: "Starter Set: David Alaba",
+            mourinhoTitle: "Mourinho Set",
+            label: "Contents:",
+            d: "d", h: "h", m: "m", s: "s"
+        },
+        ar: {
+            title: "كوينز eFootball موبايل",
+            sectionTitle: "شحن عادي ⚠️",            limitedTitle: "عروض خاصة لفترة محدودة ⏰",
+            nunezTitle: "مجموعة البداية: داروين نونيز",
+            alabaTitle: "مجموعة البداية: ديفيد ألابا",
+            mourinhoTitle: "مجموعة جوزيه مورينيو",
+            label: "محتويات الباقة:",
+            d: "يوم", h: "ساعة", m: "د", s: "ث"
+        }
+    };
+
+    function toggleLang() {
+        const title = document.getElementById("pageTitle");
+        const sectionTitle = document.getElementById("sectionTitle");        const limitedTitle = document.getElementById("limitedTitle");
+        const nunezTitle = document.getElementById("packTitleNunez");
+        const alabaTitle = document.getElementById("packTitleAlaba");
+        const mourinhoTitle = document.getElementById("packTitleMourinho");
+        const labels = document.querySelectorAll(".pack-label");
+        
+        if(lang === "en") {
+            document.body.setAttribute("dir", "rtl");
+            lang = "ar";
+        } else {
+            document.body.setAttribute("dir", "ltr");
+            lang = "en";
+        }
+
+        title.innerText = langData[lang].title;
+        sectionTitle.innerText = langData[lang].sectionTitle;        limitedTitle.innerText = langData[lang].limitedTitle;
+        nunezTitle.innerText = langData[lang].nunezTitle;
+        alabaTitle.innerText = langData[lang].alabaTitle;
+        mourinhoTitle.innerText = langData[lang].mourinhoTitle;
+        
+        labels.forEach(lbl => {
+            lbl.innerText = langData[lang].label;
+        });
+
+        renderLiveTimers();
+    }
+
+    // Fixed expiry dates
+    const deadlineNunezAlaba = new Date("2026-07-30T02:00:00+01:00").getTime();
+    const deadlineMourinho = new Date("2026-08-06T02:00:00+01:00").getTime();
+
+    function renderLiveTimers() {
+        const currentTime = Date.now();
+
+        displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-nunez"));
+        displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-alaba"));
+        displayCalculatedTime(deadlineMourinho - currentTime, document.getElementById("timer-mourinho"));
+    }
+
+    function displayCalculatedTime(distance, element) {
+        if (!element) return;
+        
+        if (distance <= 0) {
+            const card = element.closest(".card");
+            if (card) card.style.display = "none";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const dText = langData[lang].d;
+        const hText = langData[lang].h;
+        const mText = langData[lang].m;
+        const sText = langData[lang].s;
+
+        element.innerText = `${days}${dText} ${hours}${hText} ${minutes}${mText} ${seconds}${sText}`;
+    }
+
+    setInterval(renderLiveTimers, 1000);
+    renderLiveTimers();
+</script>
+
+</body>
+</html>

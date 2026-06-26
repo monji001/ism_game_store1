@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Diamonds | ISM STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff004c; /* لون فري فاير الأحمر */
+            --secondary: #00f7ff;
+            --bg-dark: #07080f;
+            --card-bg: rgba(20, 25, 40, 0.7);
+        }
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: white; overflow-x: hidden;
+            background-image: radial-gradient(circle at 90% 10%, rgba(255, 0, 76, 0.1) 0%, transparent 40%);
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* ===== NAV (متناسق مع الرئيسية) ===== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(7, 8, 15, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 0, 76, 0.2);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            text-decoration: none; text-shadow: 0 0 10px var(--primary);
+        }
+
+        .btn-home {
+            color: #fff; text-decoration: none; font-size: 13px;
+            border: 1px solid var(--primary); padding: 8px 18px;
+            border-radius: 20px; transition: 0.3s;
+        }
+
+        .btn-home:hover { background: var(--primary); box-shadow: 0 0 15px var(--primary); }
+
+        /* ===== HEADER ===== */
+        .header { padding: 140px 20px 40px; text-align: center; }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(24px, 6vw, 45px);
+            color: #fff; text-shadow: 0 0 20px rgba(255, 0, 76, 0.5);
+        }
+
+        /* ===== DIAMONDS GRID ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px; margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 20px; border-radius: 20px;
+            text-align: center; transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 0, 76, 0.2);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px; margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 28px; color: var(--secondary);
+            font-weight: 700; margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-buy {
+            background: transparent; border: 2px solid var(--primary);
+            color: #fff; padding: 12px 30px; border-radius: 30px;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+            width: 85%; text-transform: uppercase;
+        }
+
+        .card:hover .btn-buy { background: var(--primary); border-color: var(--primary); color: #000; }
+
+        /* ===== MEMBERSHIP SECTION ===== */
+        .membership-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .member-card {
+            background: linear-gradient(135deg, rgba(255, 0, 76, 0.15), rgba(112, 0, 255, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 30px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .member-info h4 { margin: 0; font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 18px; }
+        .member-info p { margin: 5px 0 0; font-size: 14px; color: #aaa; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px; background: #030408; text-align: center;
+            border-top: 1px solid rgba(255, 0, 76, 0.2); color: #888;
+        }
+
+        .payment-methods { color: var(--secondary); font-size: 13px; margin-bottom: 10px; display: block; }
+
+        /* ===== MESSENGER ===== */
+        .messenger {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #0084ff; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+            transition: 0.4s; z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ISM STORE</a>
+    <a href="index.html" class="btn-home">BACK HOME</a>
+</nav>
+
+<section class="header">
+    <div class="container">
+        <h1><span>💎</span> Free Fire Diamonds</h1>
+        <p style="color: #666; font-size: 14px; letter-spacing: 1px;">INSTANT DELIVERY VIA PLAYER ID</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="grid">
+        <div class="card">
+            <h3>330 + 33 💎</h3>
+            <div class="price">15 DT</div>
+            <button class="btn-buy" onclick="order('330 Diamonds')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>530 + 53 💎</h3>
+            <div class="price">20 DT</div>
+            <button class="btn-buy" onclick="order('530 Diamonds')">ORDER NOW</button>
+        </div>
+
+        <div class="card" style="border-color: var(--secondary);">
+            <div style="position:absolute; top:10px; right:10px; background:var(--secondary); color:#000; font-size:9px; padding:2px 7px; border-radius:5px; font-weight:bold;">MOST POPULAR</div>
+            <h3>1080 + 108 💎</h3>
+            <div class="price">40 DT</div>
+            <button class="btn-buy" onclick="order('1080 Diamonds')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>2200 + 220 💎</h3>
+            <div class="price">80 DT</div>
+            <button class="btn-buy" onclick="order('2200 Diamonds')">ORDER NOW</button>
+        </div>
+
+        <div class="card">
+            <h3>5600 + 560 💎</h3>
+            <div class="price">200 DT</div>
+            <button class="btn-buy" onclick="order('5600 Diamonds')">ORDER NOW</button>
+        </div>
+    </div>
+
+    <h2 style="font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 25px; color: var(--primary); border-right: 4px solid var(--primary); padding-right: 15px; text-align: right;">العضويات الخاصة</h2>
+    
+    <div class="membership-container">
+        <div class="member-card">
+            <div class="member-info">
+                <h4>WEEKLY MEMBERSHIP</h4>
+                <p>450 Total Diamonds Value</p>
+            </div>
+            <div style="text-align: right;">
+                <div class="price" style="font-size: 22px; margin: 0;">10 DT</div>
+                <button class="btn-buy" style="padding: 5px 20px; font-size: 12px; width: auto;" onclick="order('Weekly Membership')">BUY</button>
+            </div>
+        </div>
+
+        <div class="member-card">
+            <div class="member-info">
+                <h4>MONTHLY MEMBERSHIP</h4>
+                <p>2600 Total Diamonds Value</p>
+            </div>
+            <div style="text-align: right;">
+                <div class="price" style="font-size: 22px; margin: 0;">40 DT</div>
+                <button class="btn-buy" style="padding: 5px 20px; font-size: 12px; width: auto;" onclick="order('Monthly Membership')">BUY</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <span class="payment-methods">D17 • Poste • Flouci • Ooredoo • Bank Transfer</span>
+    <p>© 2026 ISM Game Store | Premium Gaming Hub</p>
+</footer>
+
+<a class="messenger" href="https://m.me/61555974173704" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
+</a>
+
+<script>
+    function order(item) {
+        let msg = encodeURIComponent("مرحباً ISM Store، أريد طلب: " + item + " في فري فاير");
+        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+    }
+</script>
+
+</body>
+</html>
