@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Packages | ISM STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --ooredoo: #ed1c24;
+            --orange: #ff7900;
+            --bg-dark: #07080f;
+            --card-bg: rgba(20, 25, 40, 0.7);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: white; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.05) 0%, transparent 80%);
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(7, 8, 15, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-home {
+            color: #fff; text-decoration: none; font-size: 13px;
+            border: 1px solid var(--primary); padding: 8px 18px;
+            border-radius: 20px; transition: 0.3s;
+        }
+
+        .btn-home:hover { background: var(--primary); color: #000; }
+
+        /* ===== HEADER ===== */
+        .header { padding: 140px 20px 40px; text-align: center; }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(22px, 5vw, 40px);
+            color: #fff; text-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section-title {
+            display: flex; align-items: center; gap: 15px;
+            margin: 50px 0 30px; font-family: 'Orbitron', sans-serif;
+        }
+        .line { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+        /* ===== GRID & CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px; padding: 25px 15px;
+            text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card h3 { font-size: 24px; margin: 0; font-family: 'Orbitron', sans-serif; }
+        .price { font-size: 18px; margin: 10px 0 20px; color: var(--primary); font-weight: bold; }
+
+        /* Specific Styles */
+        .ooredoo-card:hover { border-color: var(--ooredoo); box-shadow: 0 10px 25px rgba(237, 28, 36, 0.2); }
+        .orange-card:hover { border-color: var(--orange); box-shadow: 0 10px 25px rgba(255, 121, 0, 0.2); }
+
+        .btn-order {
+            width: 100%; padding: 10px; border-radius: 12px;
+            border: none; font-weight: bold; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; font-size: 12px;
+        }
+
+        .ooredoo-btn { background: var(--ooredoo); color: white; }
+        .orange-btn { background: var(--orange); color: white; }
+        .btn-order:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        /* ===== FOOTER ===== */
+        footer { padding: 40px; text-align: center; color: #555; font-size: 14px; }
+
+        /* ===== MESSENGER ===== */
+        .messenger {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #0084ff; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+            transition: 0.4s; z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">ISM STORE</a>
+    <a href="index.html" class="btn-home">BACK HOME</a>
+</nav>
+
+<section class="header">
+    <div class="container">
+        <h1>📶 Internet SIM Packages</h1>
+        <p style="color: #666; font-size: 14px;">شحن فوري لجميع الخطوط التونسية</p>
+    </div>
+</section>
+
+<div class="container">
+    
+    <div class="section">
+        <div class="section-title">
+            <h2 style="color: var(--ooredoo);">Ooredoo</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <script>
+                const ooredooPlans = [
+                    {go: '25 Go', price: '30 DT'}, {go: '30 Go', price: '35 DT'},
+                    {go: '42 Go', price: '45 DT'}, {go: '55 Go', price: '55 DT'},
+                    {go: '100 Go', price: '70 DT'}, {go: '200 Go', price: '100 DT'}
+                ];
+                ooredooPlans.forEach(plan => {
+                    document.write(`
+                        <div class="card ooredoo-card">
+                            <h3>${plan.go}</h3>
+                            <div class="price">${plan.price}</div>
+                            <button class="btn-order ooredoo-btn" onclick="order('Ooredoo ${plan.go}')">Order Now</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <h2 style="color: var(--orange);">Orange</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <script>
+                const orangePlans = [
+                    {go: '25 Go', price: '30 DT'}, {go: '30 Go', price: '35 DT'},
+                    {go: '42 Go', price: '45 DT'}, {go: '55 Go', price: '55 DT'},
+                    {go: '100 Go', price: '70 DT'}, {go: '200 Go', price: '100 DT'}
+                ];
+                orangePlans.forEach(plan => {
+                    document.write(`
+                        <div class="card orange-card">
+                            <h3>${plan.go}</h3>
+                            <div class="price">${plan.price}</div>
+                            <button class="btn-order orange-btn" onclick="order('Orange ${plan.go}')">Order Now</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 ISM Game Store — All Rights Reserved</p>
+</footer>
+
+<a class="messenger" href="https://m.me/61555974173704" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
+</a>
+
+<script>
+    function order(plan) {
+        let msg = encodeURIComponent("مرحباً ISM Store، أريد شحن عرض إنترنت: " + plan);
+        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+    }
+</script>
+
+</body>
+</html>
+
