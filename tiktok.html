@@ -162,25 +162,28 @@ transform:scale(1.15);
 <div class="row">
 <div class="amount">500 Coins</div>
 <div class="price">23 DT</div>
-<button onclick="order()">Order</button>
+<button onclick="order('500 TikTok Coins', '23 DT')">Order</button>
+
 </div>
 
 <div class="row">
 <div class="amount">1000 Coins</div>
 <div class="price">42 DT</div>
-<button onclick="order()">Order</button>
+<button onclick="order('1000 TikTok Coins', '42 DT')">Order</button>
+
 </div>
 
 <div class="row">
 <div class="amount">2000 Coins</div>
 <div class="price">77 DT</div>
-<button onclick="order()">Order</button>
+<button onclick="order('2000 TikTok Coins', '77 DT')">Order</button>
+
 </div>
 
 <div class="row">
 <div class="amount">5000 Coins</div>
 <div class="price">190 DT</div>
-<button onclick="order()">Order</button>
+<button onclick="order('5000 TikTok Coins', '190 DT')">Order</button>
 </div>
 
 </div>
@@ -193,8 +196,29 @@ transform:scale(1.15);
 <a class="messenger" href="https://m.me/61555974173704" target="_blank">💬</a>
 
 <script>
-function order(){
-window.location.href="https://m.me/61555974173704";
+function order(product, price) {
+    let message = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${product}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + message, "_blank");
 }
 </script>
 

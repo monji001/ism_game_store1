@@ -149,32 +149,33 @@
         <div class="card">
             <div class="value">500 TL</div>
             <div class="price">60 DT</div>
-            <button class="btn-buy" onclick="order('500 TL')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('500 TL PSN Turkey Gift Card', '60 DT')">ORDER NOW</button>
         </div>
 
         <div class="card">
             <div class="value">750 TL</div>
             <div class="price">85 DT</div>
-            <button class="btn-buy" onclick="order('750 TL')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('750 TL PSN Turkey Gift Card', '85 DT')">ORDER NOW</button>
         </div>
 
         <div class="card" style="border-color: var(--primary);">
             <div style="position:absolute; top:12px; right:12px; background:var(--primary); color:#000; font-size:9px; padding:3px 10px; border-radius:5px; font-weight:bold;">BEST SELLER</div>
             <div class="value">1000 TL</div>
             <div class="price">110 DT</div>
-            <button class="btn-buy" onclick="order('1000 TL')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('1000 TL PSN Turkey Gift Card', '110 DT')">ORDER NOW</button>
+
         </div>
 
         <div class="card">
             <div class="value">1500 TL</div>
             <div class="price">155 DT</div>
-            <button class="btn-buy" onclick="order('1500 TL')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('1500 TL PSN Turkey Gift Card', '155 DT')">ORDER NOW</button>
         </div>
 
         <div class="card">
             <div class="value">2000 TL</div>
             <div class="price">200 DT</div>
-            <button class="btn-buy" onclick="order('2000 TL')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('2000 TL PSN Turkey Gift Card', '200 DT')">ORDER NOW</button>
         </div>
     </div>
 </div>
@@ -187,12 +188,32 @@
     <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
 </a>
 
-<script>
-    function order(value) {
-        let msg = encodeURIComponent("مرحباً ISM Store، أريد طلب كرت بلايستيشن تركي بقيمة: " + value);
-        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
-    }
-</script>
 
+<script>
+function order(product, price) {
+    const msg = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${product}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+}
+</script>
 </body>
 </html>

@@ -145,40 +145,39 @@
         <div class="card">
             <h3>60 UC</h3>
             <div class="price">5 DT</div>
-            <button class="btn-buy" onclick="order('60 UC')">Order Now</button>
+<button class="btn-buy" onclick="order('60 UC', '5 DT')">Order Now</button>
         </div>
 
         <div class="card">
             <h3>325 UC</h3>
             <div class="price">18 DT</div>
-            <button class="btn-buy" onclick="order('325 UC')">Order Now</button>
+<button class="btn-buy" onclick="order('325 UC', '18 DT')">Order Now</button>
         </div>
 
         <div class="card">
             <div style="position:absolute; top:10px; right:10px; background:var(--pubg-gold); color:#000; font-size:9px; padding:2px 8px; border-radius:5px; font-weight:bold;">POPULAR</div>
             <h3>660 UC</h3>
             <div class="price">35 DT</div>
-            <button class="btn-buy" onclick="order('660 UC')">Order Now</button>
+<button class="btn-buy" onclick="order('660 UC', '35 DT')">Order Now</button>
         </div>
 
         <div class="card">
             <h3>1800 UC</h3>
             <div class="price">88 DT</div>
-            <button class="btn-buy" onclick="order('1800 UC')">Order Now</button>
+<button class="btn-buy" onclick="order('1800 UC', '88 DT')">Order Now</button>
         </div>
 
         <div class="card">
             <h3>3850 UC</h3>
             <div class="price">175 DT</div>
-            <button class="btn-buy" onclick="order('3850 UC')">Order Now</button>
+<button class="btn-buy" onclick="order('3850 UC', '175 DT')">Order Now</button>
         </div>
 
         <div class="card" style="border-color: var(--pubg-gold);">
             <div style="position:absolute; top:10px; right:10px; background:var(--pubg-gold); color:#000; font-size:9px; padding:2px 8px; border-radius:5px; font-weight:bold;">ELITE</div>
             <h3>8100 UC</h3>
             <div class="price">333 DT</div>
-            <button class="btn-buy" onclick="order('8100 UC')">Order Now</button>
-        </div>
+<button class="btn-buy" onclick="order('8100 UC', '333 DT')">Order Now</button>        </div>
     </div>
 </div>
 
@@ -191,12 +190,30 @@
 </a>
 
 <script>
-    function order(pack) {
-        let message = encodeURIComponent(
-            "مرحباً ISM Store\nأود طلب باقة شدات ببجي:\nالكمية: " + pack + "\nرقم الآيدي (ID): "
-        );
-        window.open("https://m.me/61555974173704?text=" + message, "_blank");
-    }
+function order(product, price) {
+    let message = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${product}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + message, "_blank");
+}
 </script>
 
 </body>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
@@ -11,6 +12,7 @@
             --primary: #00f7ff;
             --ooredoo: #ed1c24;
             --orange: #ff7900;
+            --tt: #6f42c1;
             --bg-dark: #07080f;
             --card-bg: rgba(20, 25, 40, 0.7);
         }
@@ -96,6 +98,8 @@
 
         .ooredoo-btn { background: var(--ooredoo); color: white; }
         .orange-btn { background: var(--orange); color: white; }
+        .tt-btn { background: var(--tt); color: white; }
+        .tt-card:hover { border-color: var(--tt); box-shadow: 0 10px 25px rgba(111,66,193,.25); }
         .btn-order:hover { transform: scale(1.05); filter: brightness(1.2); }
 
         /* ===== FOOTER ===== */
@@ -144,7 +148,7 @@
                         <div class="card ooredoo-card">
                             <h3>${plan.go}</h3>
                             <div class="price">${plan.price}</div>
-                            <button class="btn-order ooredoo-btn" onclick="order('Ooredoo ${plan.go}')">Order Now</button>
+                            <button class="btn-order ooredoo-btn" onclick="order('Ooredoo ${plan.go}', '${plan.price}')">Order Now</button>
                         </div>
                     `);
                 });
@@ -162,14 +166,42 @@
                 const orangePlans = [
                     {go: '25 Go', price: '30 DT'}, {go: '30 Go', price: '35 DT'},
                     {go: '42 Go', price: '45 DT'}, {go: '55 Go', price: '55 DT'},
-                    {go: '100 Go', price: '70 DT'}, {go: '200 Go', price: '100 DT'}
+                    {go: '100 Go', price: '70 DT'}
                 ];
                 orangePlans.forEach(plan => {
                     document.write(`
                         <div class="card orange-card">
                             <h3>${plan.go}</h3>
                             <div class="price">${plan.price}</div>
-                            <button class="btn-order orange-btn" onclick="order('Orange ${plan.go}')">Order Now</button>
+                            <button class="btn-order orange-btn" onclick="order('Orange ${plan.go}', '${plan.price}')">Order Now</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <h2 style="color: var(--tt);">Tunisie Telecom (TT)</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <script>
+                const ttPlans = [
+                    {go: '25 Go', price: '30 DT'},
+                    {go: '30 Go', price: '35 DT'},
+                    {go: '42 Go', price: '45 DT'},
+                    {go: '55 Go', price: '55 DT'},
+                    {go: '100 Go', price: '70 DT'},
+                    {go: '200 Go', price: '100 DT'}
+                ];
+                ttPlans.forEach(plan => {
+                    document.write(`
+                        <div class="card tt-card">
+                            <h3>${plan.go}</h3>
+                            <div class="price">${plan.price}</div>
+                            <button class="btn-order tt-btn" onclick="order('Tunisie Telecom ${plan.go}', '${plan.price}')">Order Now</button>
                         </div>
                     `);
                 });
@@ -188,10 +220,30 @@
 </a>
 
 <script>
-    function order(plan) {
-        let msg = encodeURIComponent("مرحباً ISM Store، أريد شحن عرض إنترنت: " + plan);
-        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
-    }
+function order(product, price) {
+    let msg = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${product}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+}
 </script>
 
 </body>

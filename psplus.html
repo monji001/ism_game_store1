@@ -142,28 +142,25 @@
         <span>ESSENTIAL</span> <div class="line"></div>
     </div>
     <div class="grid">
-        <div class="card essential-card"><h3>1 Month</h3><div class="price">35 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 1 Month')">Order Now</button></div>
-        <div class="card essential-card"><h3>3 Months</h3><div class="price">75 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 3 Months')">Order Now</button></div>
-        <div class="card essential-card"><h3>12 Months</h3><div class="price">150 DT</div><button class="btn-buy btn-essential" onclick="order('Essential 12 Months')">Order Now</button></div>
-    </div>
+<div class="card essential-card"><h3>1 Month</h3><div class="price">35 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 1 Month', '35 DT')">Order Now</button></div>
+<div class="card essential-card"><h3>3 Months</h3><div class="price">75 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 3 Months', '75 DT')">Order Now</button></div>
+<div class="card essential-card"><h3>12 Months</h3><div class="price">150 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 12 Months', '150 DT')">Order Now</button></div>    </div>
 
     <div class="section-title" style="color: var(--extra);">
         <span>EXTRA</span> <div class="line"></div>
     </div>
     <div class="grid">
-        <div class="card extra-card"><h3>1 Month</h3><div class="price">45 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 1 Month')">Order Now</button></div>
-        <div class="card extra-card"><h3>3 Months</h3><div class="price">110 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 3 Months')">Order Now</button></div>
-        <div class="card extra-card"><h3>12 Months</h3><div class="price">230 DT</div><button class="btn-buy btn-extra" onclick="order('Extra 12 Months')">Order Now</button></div>
-    </div>
+<div class="card extra-card"><h3>1 Month</h3><div class="price">45 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 1 Month', '45 DT')">Order Now</button></div>
+<div class="card extra-card"><h3>3 Months</h3><div class="price">110 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 3 Months', '110 DT')">Order Now</button></div>
+<div class="card extra-card"><h3>12 Months</h3><div class="price">230 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 12 Months', '230 DT')">Order Now</button></div>    </div>
 
     <div class="section-title" style="color: var(--deluxe);">
         <span>DELUXE</span> <div class="line"></div>
     </div>
     <div class="grid">
-        <div class="card deluxe-card"><h3>1 Month</h3><div class="price">50 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 1 Month')">Order Now</button></div>
-        <div class="card deluxe-card"><h3>3 Months</h3><div class="price">120 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 3 Months')">Order Now</button></div>
-        <div class="card deluxe-card"><h3>12 Months</h3><div class="price">265 DT</div><button class="btn-buy btn-deluxe" onclick="order('Deluxe 12 Months')">Order Now</button></div>
-    </div>
+<div class="card deluxe-card"><h3>1 Month</h3><div class="price">50 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 1 Month', '50 DT')">Order Now</button></div>
+<div class="card deluxe-card"><h3>3 Months</h3><div class="price">120 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 3 Months', '120 DT')">Order Now</button></div>
+<div class="card deluxe-card"><h3>12 Months</h3><div class="price">265 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 12 Months', '265 DT')">Order Now</button></div>    </div>
 
 </div>
 
@@ -176,22 +173,43 @@
 </a>
 
 <script>
-    function order(plan) {
-        let msg = encodeURIComponent("مرحباً ISM Store، أريد شحن اشتراك: PS Plus " + plan);
-        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
-    }
+function order(product, price) {
+    let msg = encodeURIComponent(
+`Hello ISM STORE
 
-    let lang = "en";
-    function toggleLang() {
-        const title = document.getElementById("pageTitle");
-        if(lang === "en") {
-            title.innerText = "بلايستيشن بلس أوكرانيا 🇺🇦";
-            lang = "ar";
-        } else {
-            title.innerText = "PS Plus Ukraine 🇺🇦";
-            lang = "en";
-        }
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${product}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+}
+
+let lang = "en";
+function toggleLang() {
+    const title = document.getElementById("pageTitle");
+
+    if (lang === "en") {
+        title.innerText = "بلايستيشن بلس أوكرانيا 🇺🇦";
+        lang = "ar";
+    } else {
+        title.innerText = "PS Plus Ukraine 🇺🇦";
+        lang = "en";
     }
+}
 </script>
 
 </body>

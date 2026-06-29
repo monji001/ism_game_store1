@@ -146,7 +146,7 @@
             <span class="card-icon">👤</span>
             <h3 id="profileTitle">1 Profile (Shared)</h3>
             <div class="price">15 DT</div>
-            <button class="btn-order" onclick="order('1 Profile')" id="orderBtn1">Order Now</button>
+            <button class="btn-order" onclick="order('1 Profile (Shared)', '15 DT')" id="orderBtn1">Order Now</button>
         </div>
 
         <div class="card" style="border-color: var(--primary);">
@@ -154,7 +154,7 @@
             <span class="card-icon">📺</span>
             <h3 id="fullTitle">Full Account (5 Profiles)</h3>
             <div class="price">40 DT</div>
-            <button class="btn-order" onclick="order('Full Account')" id="orderBtn2">Order Now</button>
+            <button class="btn-order" onclick="order('Full Account (5 Profiles)', '40 DT')" id="orderBtn2">Order Now</button>
         </div>
     </div>
 </div>
@@ -168,10 +168,30 @@
 </a>
 
 <script>
-    function order(type) {
-        let msg = encodeURIComponent("مرحباً ISM Store، أريد طلب اشتراك نتفليكس: " + type);
-        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
-    }
+    function order(type, price) {
+    let msg = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${type}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+}
 
     let lang = "en";
     function toggleLang() {

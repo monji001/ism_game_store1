@@ -151,32 +151,32 @@
         <div class="card">
             <h3>330 + 33 💎</h3>
             <div class="price">15 DT</div>
-            <button class="btn-buy" onclick="order('330 Diamonds')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('330 Diamonds', '15 DT')">ORDER NOW</button>
         </div>
 
         <div class="card">
             <h3>530 + 53 💎</h3>
             <div class="price">20 DT</div>
-            <button class="btn-buy" onclick="order('530 Diamonds')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('530 Diamonds', '20 DT')">ORDER NOW</button>
         </div>
 
         <div class="card" style="border-color: var(--secondary);">
             <div style="position:absolute; top:10px; right:10px; background:var(--secondary); color:#000; font-size:9px; padding:2px 7px; border-radius:5px; font-weight:bold;">MOST POPULAR</div>
             <h3>1080 + 108 💎</h3>
             <div class="price">40 DT</div>
-            <button class="btn-buy" onclick="order('1080 Diamonds')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('1080 Diamonds', '40 DT')">ORDER NOW</button>
         </div>
 
         <div class="card">
             <h3>2200 + 220 💎</h3>
             <div class="price">80 DT</div>
-            <button class="btn-buy" onclick="order('2200 Diamonds')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('2200 Diamonds', '80 DT')">ORDER NOW</button>
         </div>
 
         <div class="card">
             <h3>5600 + 560 💎</h3>
             <div class="price">200 DT</div>
-            <button class="btn-buy" onclick="order('5600 Diamonds')">ORDER NOW</button>
+            <button class="btn-buy" onclick="order('5600 Diamonds', '200 DT')">ORDER NOW</button>
         </div>
     </div>
 
@@ -190,7 +190,7 @@
             </div>
             <div style="text-align: right;">
                 <div class="price" style="font-size: 22px; margin: 0;">10 DT</div>
-                <button class="btn-buy" style="padding: 5px 20px; font-size: 12px; width: auto;" onclick="order('Weekly Membership')">BUY</button>
+                <button class="btn-buy" onclick="order('Weekly Membership', '10 DT')">BUY</button>
             </div>
         </div>
 
@@ -201,7 +201,7 @@
             </div>
             <div style="text-align: right;">
                 <div class="price" style="font-size: 22px; margin: 0;">40 DT</div>
-                <button class="btn-buy" style="padding: 5px 20px; font-size: 12px; width: auto;" onclick="order('Monthly Membership')">BUY</button>
+                <button class="btn-buy" onclick="order('Monthly Membership', '40 DT')">BUY</button>
             </div>
         </div>
     </div>
@@ -217,10 +217,30 @@
 </a>
 
 <script>
-    function order(item) {
-        let msg = encodeURIComponent("مرحباً ISM Store، أريد طلب: " + item + " في فري فاير");
-        window.open("https://m.me/61555974173704?text=" + msg, "_blank");
-    }
+    function order(item, price) {
+    let msg = encodeURIComponent(
+`Hello ISM STORE
+
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+${item}
+
+Price:
+${price}
+
+━━━━━━━━━━━━━━━━━━
+
+Please send me the payment details and I'll complete my order right away.
+
+Thank you!`
+    );
+
+    window.open("https://m.me/61555974173704?text=" + msg, "_blank");
+}
 </script>
 
 </body>
