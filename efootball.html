@@ -296,10 +296,21 @@
 
 <script>
     function order(packName) {
-        let message = encodeURIComponent("Hello ISM STORE, I would like to purchase the [" + packName + "] package. Please guide me through the next steps to complete my order.");
-        let url = "https://m.me/61555974173704?text=" + message;
-        window.open(url, '_blank');
-    }
+    let message = encodeURIComponent(
+`🎮 Hello ISM STORE 👋
+
+I'd like to order the following product:
+
+📦 Product: ${packName}
+
+Please send me the payment details so I can complete my order.
+
+Thank you! ❤️`
+    );
+
+    let url = "https://m.me/61555974173704?text=" + message;
+    window.open(url, "_blank");
+}
 
     let lang = "en";
     
