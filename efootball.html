@@ -297,15 +297,28 @@
 <script>
     function order(packName) {
     let message = encodeURIComponent(
-`🎮 Hello ISM STORE 👋
+`script>
+    function order(packName) {
+    let message = encodeURIComponent(
 
-I'd like to order the following product:
 
-📦 Product: ${packName}
 
-Please send me the payment details so I can complete my order.
+Hello ISM STORE
 
-Thank you! ❤️`
+I'd like to place the following order:
+
+━━━━━━━━━━━━━━━━━━
+ORDER INFORMATION
+
+Product:
+
+${packName}
+==========================
+
+Please send me the payment details and I'll complete my order right away.
+
+
+Thank you!`
     );
 
     let url = "https://m.me/61555974173704?text=" + message;
