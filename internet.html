@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,106 +12,301 @@
             --primary: #00f7ff;
             --ooredoo: #ed1c24;
             --orange: #ff7900;
-            --tt: #6f42c1;
-            --bg-dark: #07080f;
-            --card-bg: rgba(20, 25, 40, 0.7);
+            --tt: #7b4cff;
+            --bg-dark: #050713;
+            --card-bg: rgba(10, 16, 32, 0.82);
+            --gold: #ffd166;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
             background: var(--bg-dark);
             color: white; overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.05) 0%, transparent 80%);
         }
 
-        .container { width: 90%; max-width: 1200px; margin: auto; }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 14% 18%, rgba(237, 28, 36, 0.2), transparent 28%),
+                radial-gradient(circle at 84% 16%, rgba(255, 121, 0, 0.2), transparent 28%),
+                radial-gradient(circle at 52% 86%, rgba(123, 76, 255, 0.2), transparent 32%),
+                linear-gradient(145deg, #050713 0%, #081329 52%, #03040a 100%);
+        }
 
-        /* ===== NAVIGATION ===== */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 96px),
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 96px);
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        .container { width: min(92%, 1200px); margin: auto; }
+
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(7, 8, 15, 0.85);
+            position: fixed; top: 0; left: 0; right: 0; width: 100%;
+            background: rgba(5, 7, 19, 0.86);
             backdrop-filter: blur(15px);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 18px;
+            padding: 15px 5%; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            color: white; font-weight: bold; font-size: 1.12rem;
             text-decoration: none;
+            text-shadow: 0 0 16px rgba(0, 247, 255, 0.55);
+            white-space: nowrap;
         }
 
         .btn-home {
             color: #fff; text-decoration: none; font-size: 13px;
-            border: 1px solid var(--primary); padding: 8px 18px;
-            border-radius: 20px; transition: 0.3s;
+            border: 1px solid rgba(0, 247, 255, 0.28); padding: 8px 18px;
+            border-radius: 8px; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.04);
+            white-space: nowrap;
         }
 
-        .btn-home:hover { background: var(--primary); color: #000; }
+        .btn-home:hover { background: var(--primary); color: #031018; box-shadow: 0 0 18px rgba(0, 247, 255, 0.45); }
 
-        /* ===== HEADER ===== */
-        .header { padding: 140px 20px 40px; text-align: center; }
-        .header h1 {
+        .header { padding: 138px 20px 54px; text-align: center; position: relative; overflow: hidden; }
+
+        .header::before {
+            content: "DATA";
+            position: absolute;
+            left: 50%;
+            top: 76px;
+            transform: translateX(-50%);
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(22px, 5vw, 40px);
-            color: #fff; text-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+            font-size: clamp(76px, 17vw, 176px);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.035);
+            pointer-events: none;
         }
 
-        /* ===== SECTIONS ===== */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: rgba(0, 247, 255, 0.09);
+            border: 1px solid rgba(0, 247, 255, 0.26);
+            color: #bffcff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+        }
+
+        .header h1 {
+            position: relative;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            color: #fff; text-shadow: 0 0 24px rgba(0, 247, 255, 0.54);
+        }
+
+        .header p {
+            position: relative;
+            color: #aeb8d0;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 16px auto 0;
+            max-width: 620px;
+        }
+
+        .section { margin-bottom: 48px; }
+
         .section-title {
             display: flex; align-items: center; gap: 15px;
-            margin: 50px 0 30px; font-family: 'Orbitron', sans-serif;
+            margin: 46px 0 18px; font-family: 'Orbitron', sans-serif;
         }
-        .line { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.1); }
 
-        /* ===== GRID & CARDS ===== */
+        .section-title h2 {
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            padding: 9px 13px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.09);
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+        }
+
+        .ooredoo-title h2 { color: var(--ooredoo); }
+        .orange-title h2 { color: var(--orange); }
+        .tt-title h2 { color: var(--tt); }
+
+        .line { flex-grow: 1; height: 1px; background: linear-gradient(90deg, currentColor, transparent); opacity: 0.42; }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 20px; padding: 25px 15px;
-            text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-height: 220px;
+            background:
+                linear-gradient(160deg, var(--card-bg), rgba(4, 6, 15, 0.94)),
+                linear-gradient(140deg, rgba(0,247,255,0.08), rgba(255,255,255,0.04));
+            border-radius: 8px; padding: 22px;
+            text-align: left; border: 1px solid rgba(255, 255, 255, 0.09);
+            transition: 0.28s ease;
             position: relative; overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
         }
 
-        .card:hover { transform: translateY(-10px); }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: var(--primary);
+        }
 
-        .card h3 { font-size: 24px; margin: 0; font-family: 'Orbitron', sans-serif; }
-        .price { font-size: 18px; margin: 10px 0 20px; color: var(--primary); font-weight: bold; }
+        .card::after {
+            content: "GB";
+            position: absolute;
+            right: 14px;
+            bottom: -20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 88px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.04);
+            pointer-events: none;
+        }
 
-        /* Specific Styles */
-        .ooredoo-card:hover { border-color: var(--ooredoo); box-shadow: 0 10px 25px rgba(237, 28, 36, 0.2); }
-        .orange-card:hover { border-color: var(--orange); box-shadow: 0 10px 25px rgba(255, 121, 0, 0.2); }
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42);
+        }
+
+        .card-head, .card-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .operator-tag {
+            display: inline-flex;
+            margin-bottom: 16px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-size: 34px;
+            line-height: 1;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+        }
+
+        .note {
+            display: block;
+            margin-top: 10px;
+            color: #aeb8d0;
+            font-size: 13px;
+        }
+
+        .price {
+            display: block;
+            font-size: 29px;
+            line-height: 1;
+            margin: 27px 0 17px;
+            color: var(--gold);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 18px rgba(255, 209, 102, 0.28);
+        }
 
         .btn-order {
-            width: 100%; padding: 10px; border-radius: 12px;
+            width: 100%; padding: 13px 14px; border-radius: 8px;
             border: none; font-weight: bold; cursor: pointer;
-            transition: 0.3s; text-transform: uppercase; font-size: 12px;
+            transition: 0.3s; text-transform: uppercase; font-size: 13px;
+            color: white;
         }
 
-        .ooredoo-btn { background: var(--ooredoo); color: white; }
-        .orange-btn { background: var(--orange); color: white; }
-        .tt-btn { background: var(--tt); color: white; }
-        .tt-card:hover { border-color: var(--tt); box-shadow: 0 10px 25px rgba(111,66,193,.25); }
-        .btn-order:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .ooredoo-card::before,
+        .ooredoo-btn,
+        .ooredoo-card .operator-tag { background: var(--ooredoo); }
+        .ooredoo-card:hover { border-color: rgba(237, 28, 36, 0.42); box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(237, 28, 36, 0.2); }
 
-        /* ===== FOOTER ===== */
-        footer { padding: 40px; text-align: center; color: #555; font-size: 14px; }
+        .orange-card::before,
+        .orange-btn,
+        .orange-card .operator-tag { background: var(--orange); }
+        .orange-card:hover { border-color: rgba(255, 121, 0, 0.42); box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(255, 121, 0, 0.2); }
 
-        /* ===== MESSENGER ===== */
+        .tt-card::before,
+        .tt-btn,
+        .tt-card .operator-tag { background: var(--tt); }
+        .tt-card:hover { border-color: rgba(123, 76, 255, 0.42); box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(123, 76, 255, 0.22); }
+
+        .btn-order:hover { transform: translateY(-2px); filter: brightness(1.12); }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #7f89a0;
+            font-size: 14px;
+            background: rgba(3, 4, 8, 0.78);
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+
         .messenger {
             position: fixed; bottom: 30px; right: 30px;
-            background: #0084ff; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #0084ff, #00f7ff); width: 60px; height: 60px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
             transition: 0.4s; z-index: 2000;
+        }
+
+        .messenger:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 32px rgba(0, 132, 255, 0.58);
+        }
+
+        @media (max-width: 920px) {
+            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 620px) {
+            nav {
+                position: relative;
+                padding: 14px 18px;
+                align-items: flex-start;
+            }
+
+            .header { padding: 54px 18px 34px; }
+            .header::before { top: 8px; }
+            .grid { grid-template-columns: 1fr; }
+            .section { margin-bottom: 36px; }
+            .card { min-height: 204px; padding: 22px; }
+            .messenger {
+                width: 54px; height: 54px;
+                right: 18px; bottom: 18px;
+            }
         }
     </style>
 </head>
@@ -124,16 +319,17 @@
 
 <section class="header">
     <div class="container">
+        <div class="hero-badge">Tunisian Mobile Data</div>
         <h1>📶 Internet SIM Packages</h1>
-        <p style="color: #666; font-size: 14px;">شحن فوري لجميع الخطوط التونسية</p>
+        <p>شحن فوري لجميع الخطوط التونسية: Ooredoo, Orange, and Tunisie Telecom.</p>
     </div>
 </section>
 
 <div class="container">
     
     <div class="section">
-        <div class="section-title">
-            <h2 style="color: var(--ooredoo);">Ooredoo</h2>
+        <div class="section-title ooredoo-title">
+            <h2>Ooredoo</h2>
             <div class="line"></div>
         </div>
         <div class="grid">
@@ -146,9 +342,15 @@
                 ooredooPlans.forEach(plan => {
                     document.write(`
                         <div class="card ooredoo-card">
-                            <h3>${plan.go}</h3>
-                            <div class="price">${plan.price}</div>
-                            <button class="btn-order ooredoo-btn" onclick="order('Ooredoo ${plan.go}', '${plan.price}')">Order Now</button>
+                            <div class="card-head">
+                                <span class="operator-tag">Ooredoo</span>
+                                <h3>${plan.go}</h3>
+                                <span class="note">Instant mobile data recharge</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="price">${plan.price}</div>
+                                <button class="btn-order ooredoo-btn" onclick="order('Ooredoo ${plan.go}', '${plan.price}')">Order Now</button>
+                            </div>
                         </div>
                     `);
                 });
@@ -157,8 +359,8 @@
     </div>
 
     <div class="section">
-        <div class="section-title">
-            <h2 style="color: var(--orange);">Orange</h2>
+        <div class="section-title orange-title">
+            <h2>Orange</h2>
             <div class="line"></div>
         </div>
         <div class="grid">
@@ -171,9 +373,15 @@
                 orangePlans.forEach(plan => {
                     document.write(`
                         <div class="card orange-card">
-                            <h3>${plan.go}</h3>
-                            <div class="price">${plan.price}</div>
-                            <button class="btn-order orange-btn" onclick="order('Orange ${plan.go}', '${plan.price}')">Order Now</button>
+                            <div class="card-head">
+                                <span class="operator-tag">Orange</span>
+                                <h3>${plan.go}</h3>
+                                <span class="note">Instant mobile data recharge</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="price">${plan.price}</div>
+                                <button class="btn-order orange-btn" onclick="order('Orange ${plan.go}', '${plan.price}')">Order Now</button>
+                            </div>
                         </div>
                     `);
                 });
@@ -182,8 +390,8 @@
     </div>
 
     <div class="section">
-        <div class="section-title">
-            <h2 style="color: var(--tt);">Tunisie Telecom (TT)</h2>
+        <div class="section-title tt-title">
+            <h2>Tunisie Telecom (TT)</h2>
             <div class="line"></div>
         </div>
         <div class="grid">
@@ -199,9 +407,15 @@
                 ttPlans.forEach(plan => {
                     document.write(`
                         <div class="card tt-card">
-                            <h3>${plan.go}</h3>
-                            <div class="price">${plan.price}</div>
-                            <button class="btn-order tt-btn" onclick="order('Tunisie Telecom ${plan.go}', '${plan.price}')">Order Now</button>
+                            <div class="card-head">
+                                <span class="operator-tag">Tunisie Telecom</span>
+                                <h3>${plan.go}</h3>
+                                <span class="note">Instant mobile data recharge</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="price">${plan.price}</div>
+                                <button class="btn-order tt-btn" onclick="order('Tunisie Telecom ${plan.go}', '${plan.price}')">Order Now</button>
+                            </div>
                         </div>
                     `);
                 });
@@ -248,4 +462,3 @@ Thank you!`
 
 </body>
 </html>
-

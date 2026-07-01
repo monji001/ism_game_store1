@@ -1,30 +1,34 @@
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSN Turkey Cards | ISM STORE</title>
+    <title>PSN US Gift Cards | ISM STORE</title>
+    <meta name="description" content="Buy PSN US Gift Cards from ISM Store with fast delivery and secure ordering.">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --tr-red: #e30a17;
             --ps-blue: #006fcd;
+            --ps-deep: #001a62;
             --primary: #00f7ff;
+            --us-red: #d7263d;
             --gold: #ffd166;
             --bg-dark: #050713;
-            --card-bg: rgba(12, 17, 34, 0.82);
+            --card-bg: rgba(10, 16, 35, 0.82);
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             font-family: 'Poppins', sans-serif;
             background: var(--bg-dark);
-            color: white; overflow-x: hidden;
+            color: white;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -33,9 +37,9 @@
             inset: 0;
             z-index: -2;
             background:
-                radial-gradient(circle at 18% 16%, rgba(227, 10, 23, 0.24), transparent 30%),
-                radial-gradient(circle at 86% 20%, rgba(0, 111, 205, 0.25), transparent 30%),
-                linear-gradient(145deg, #060713 0%, #09132a 48%, #03040a 100%);
+                radial-gradient(circle at 16% 16%, rgba(0, 111, 205, 0.28), transparent 30%),
+                radial-gradient(circle at 86% 18%, rgba(215, 38, 61, 0.22), transparent 28%),
+                linear-gradient(145deg, #050713 0%, #08142f 50%, #03040a 100%);
         }
 
         body::after {
@@ -45,46 +49,70 @@
             z-index: -1;
             pointer-events: none;
             background:
-                repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 94px),
-                repeating-linear-gradient(0deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 94px);
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 96px),
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 96px);
             mask-image: linear-gradient(to bottom, black, transparent 82%);
         }
 
-        .container { width: min(92%, 1200px); margin: auto; }
+        .container {
+            width: min(92%, 1200px);
+            margin: auto;
+        }
 
         nav {
-            position: fixed; top: 0; left: 0; right: 0; width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             background: rgba(5, 7, 19, 0.86);
             backdrop-filter: blur(15px);
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: 18px;
-            padding: 15px 5%; z-index: 1000;
+            padding: 15px 5%;
+            z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            color: white; font-weight: bold; font-size: 1.12rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.12rem;
             text-decoration: none;
             text-shadow: 0 0 16px rgba(0, 247, 255, 0.55);
             white-space: nowrap;
         }
 
         .btn-home {
-            color: #fff; text-decoration: none; font-size: 13px;
-            border: 1px solid rgba(0, 247, 255, 0.28); padding: 8px 18px;
-            border-radius: 8px; transition: 0.3s;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid rgba(0, 247, 255, 0.28);
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
             background: rgba(255, 255, 255, 0.04);
             white-space: nowrap;
         }
 
-        .btn-home:hover { background: var(--ps-blue); box-shadow: 0 0 18px rgba(0, 111, 205, 0.55); }
+        .btn-home:hover {
+            background: var(--ps-blue);
+            box-shadow: 0 0 18px rgba(0, 111, 205, 0.55);
+        }
 
-        .header { padding: 138px 20px 54px; text-align: center; position: relative; overflow: hidden; }
+        .header {
+            padding: 138px 20px 54px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
         .header::before {
-            content: "PSN TR";
+            content: "PSN US";
             position: absolute;
             left: 50%;
             top: 74px;
@@ -92,7 +120,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(72px, 16vw, 166px);
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.034);
+            color: rgba(255, 255, 255, 0.035);
             pointer-events: none;
         }
 
@@ -103,9 +131,9 @@
             margin-bottom: 14px;
             padding: 8px 13px;
             border-radius: 999px;
-            background: rgba(227, 10, 23, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #fff;
+            background: rgba(0, 111, 205, 0.16);
+            border: 1px solid rgba(0, 247, 255, 0.24);
+            color: #bffcff;
             font-family: 'Orbitron', sans-serif;
             font-size: 12px;
         }
@@ -115,7 +143,8 @@
             margin: 0;
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(30px, 5vw, 52px);
-            color: #fff; text-shadow: 0 0 22px rgba(0, 111, 205, 0.72);
+            color: #fff;
+            text-shadow: 0 0 24px rgba(0, 111, 205, 0.72);
         }
 
         .header p {
@@ -124,24 +153,28 @@
             font-size: 15px;
             line-height: 1.6;
             margin: 16px auto 0;
-            max-width: 620px;
+            max-width: 650px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px; padding-bottom: 68px;
+            gap: 18px;
+            padding-bottom: 68px;
         }
 
         .card {
             min-height: 238px;
             background:
                 linear-gradient(160deg, var(--card-bg), rgba(4, 6, 15, 0.94)),
-                linear-gradient(140deg, rgba(227,10,23,0.14), rgba(0,111,205,0.16));
+                linear-gradient(140deg, rgba(0,111,205,0.14), rgba(215,38,61,0.12));
             border: 1px solid rgba(255, 255, 255, 0.09);
-            padding: 24px; border-radius: 8px;
-            text-align: left; transition: 0.28s ease;
-            position: relative; overflow: hidden;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+            transition: 0.28s ease;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -153,16 +186,16 @@
             position: absolute;
             inset: 0 0 auto 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--tr-red), #ffffff 45%, var(--ps-blue));
+            background: linear-gradient(90deg, var(--ps-blue), #ffffff 48%, var(--us-red));
         }
 
         .card::after {
-            content: "₺";
+            content: "$";
             position: absolute;
             right: 16px;
-            bottom: -28px;
+            bottom: -30px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 128px;
+            font-size: 130px;
             line-height: 1;
             color: rgba(255, 255, 255, 0.04);
             pointer-events: none;
@@ -174,7 +207,8 @@
             box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(0, 111, 205, 0.2);
         }
 
-        .card-head, .card-bottom {
+        .card-head,
+        .card-bottom {
             position: relative;
             z-index: 1;
         }
@@ -185,7 +219,7 @@
             padding: 7px 10px;
             border-radius: 999px;
             color: white;
-            background: rgba(227, 10, 23, 0.88);
+            background: linear-gradient(90deg, var(--ps-blue), var(--us-red));
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -193,7 +227,8 @@
 
         .value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 34px; font-weight: bold;
+            font-size: 34px;
+            font-weight: bold;
             line-height: 1;
             color: #fff;
             text-shadow: 0 0 18px rgba(0, 111, 205, 0.34);
@@ -208,19 +243,26 @@
 
         .price {
             display: block;
-            font-size: 31px; color: var(--gold);
-            font-weight: 700; margin: 28px 0 17px;
+            font-size: 31px;
+            color: var(--gold);
+            font-weight: 700;
+            margin: 28px 0 17px;
             font-family: 'Orbitron', sans-serif;
             line-height: 1;
             text-shadow: 0 0 18px rgba(255, 209, 102, 0.28);
         }
 
         .btn-buy {
-            background: linear-gradient(90deg, var(--tr-red), var(--ps-blue));
+            background: linear-gradient(90deg, var(--ps-blue), var(--us-red));
             border: none;
-            color: #fff; padding: 13px 14px; border-radius: 8px;
-            font-weight: bold; cursor: pointer; transition: 0.3s;
-            width: 100%; text-transform: uppercase;
+            color: #fff;
+            padding: 13px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            text-transform: uppercase;
             font-size: 13px;
             box-shadow: 0 12px 28px rgba(0, 111, 205, 0.18);
         }
@@ -230,34 +272,28 @@
             transform: translateY(-2px);
         }
 
-        .featured {
-            border-color: rgba(255, 209, 102, 0.42);
-            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.32), 0 0 20px rgba(255, 209, 102, 0.1);
-        }
-
-        .badge {
-            position:absolute;
-            top:14px;
-            right:14px;
-            background:var(--gold);
-            color:#09101f;
-            font-size:10px;
-            padding:5px 9px;
-            border-radius:999px;
-            font-weight:bold;
-        }
-
         footer {
-            padding: 40px 20px; background: rgba(3, 4, 8, 0.78); text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.07); color: #7f89a0;
+            padding: 40px 20px;
+            background: rgba(3, 4, 8, 0.78);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #7f89a0;
         }
 
         .messenger {
-            position: fixed; bottom: 30px; right: 30px;
-            background: linear-gradient(135deg, #0084ff, #00f7ff); width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
-            transition: 0.4s; z-index: 2000;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #0084ff, #00f7ff);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+            transition: 0.4s;
+            z-index: 2000;
         }
 
         .messenger:hover {
@@ -266,7 +302,9 @@
         }
 
         @media (max-width: 880px) {
-            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         @media (max-width: 650px) {
@@ -276,18 +314,38 @@
                 align-items: flex-start;
             }
 
-            .header { padding: 54px 18px 34px; }
-            .header::before { top: 8px; }
-            .grid { grid-template-columns: 1fr; padding-bottom: 54px; }
-            .card { min-height: 216px; padding: 22px; }
-            .value { font-size: 31px; }
+            .header {
+                padding: 54px 18px 34px;
+            }
+
+            .header::before {
+                top: 8px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding-bottom: 54px;
+            }
+
+            .card {
+                min-height: 216px;
+                padding: 22px;
+            }
+
+            .value {
+                font-size: 31px;
+            }
+
             .messenger {
-                width: 54px; height: 54px;
-                right: 18px; bottom: 18px;
+                width: 54px;
+                height: 54px;
+                right: 18px;
+                bottom: 18px;
             }
         }
     </style>
 </head>
+
 <body>
 
 <nav>
@@ -297,9 +355,9 @@
 
 <section class="header">
     <div class="container">
-        <div class="hero-badge">Turkey Region</div>
-        <h1>🇹🇷 PSN Turkey Gift Cards</h1>
-        <p>PlayStation Store credit for Turkish accounts with fast code delivery.</p>
+        <div class="hero-badge">United States Region</div>
+        <h1>PSN US Gift Cards</h1>
+        <p>PlayStation Store credit for US accounts with fast digital code delivery.</p>
     </div>
 </section>
 
@@ -307,91 +365,89 @@
     <div class="grid">
         <div class="card">
             <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">250 TL</div>
-                <span class="note">Turkish PlayStation Store credit</span>
+                <span class="region-tag">PSN US</span>
+                <div class="value">5 USD</div>
+                <span class="note">US PlayStation Store credit</span>
             </div>
             <div class="card-bottom">
-                <div class="price">32 DT</div>
-                <button class="btn-buy" onclick="order('250 TL PSN Turkey Gift Card', '32 DT')">Order Now</button>
+                <div class="price">22 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 5 USD', '22 DT')">Order Now</button>
             </div>
         </div>
 
         <div class="card">
             <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">500 TL</div>
-                <span class="note">Turkish PlayStation Store credit</span>
+                <span class="region-tag">PSN US</span>
+                <div class="value">10 USD</div>
+                <span class="note">US PlayStation Store credit</span>
             </div>
             <div class="card-bottom">
-                <div class="price">60 DT</div>
-                <button class="btn-buy" onclick="order('500 TL PSN Turkey Gift Card', '60 DT')">Order Now</button>
+                <div class="price">40 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 10 USD', '40 DT')">Order Now</button>
             </div>
         </div>
 
         <div class="card">
             <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">750 TL</div>
-                <span class="note">Turkish PlayStation Store credit</span>
+                <span class="region-tag">PSN US</span>
+                <div class="value">20 USD</div>
+                <span class="note">US PlayStation Store credit</span>
             </div>
             <div class="card-bottom">
-                <div class="price">85 DT</div>
-                <button class="btn-buy" onclick="order('750 TL PSN Turkey Gift Card', '85 DT')">Order Now</button>
-            </div>
-        </div>
-
-        <div class="card featured">
-            <div class="badge">Best Seller</div>
-            <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">1000 TL</div>
-                <span class="note">Most requested balance pack</span>
-            </div>
-            <div class="card-bottom">
-                <div class="price">110 DT</div>
-                <button class="btn-buy" onclick="order('1000 TL PSN Turkey Gift Card', '110 DT')">Order Now</button>
+                <div class="price">80 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 20 USD', '80 DT')">Order Now</button>
             </div>
         </div>
 
         <div class="card">
             <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">1500 TL</div>
-                <span class="note">Turkish PlayStation Store credit</span>
+                <span class="region-tag">PSN US</span>
+                <div class="value">25 USD</div>
+                <span class="note">US PlayStation Store credit</span>
             </div>
             <div class="card-bottom">
-                <div class="price">155 DT</div>
-                <button class="btn-buy" onclick="order('1500 TL PSN Turkey Gift Card', '155 DT')">Order Now</button>
+                <div class="price">95 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 25 USD', '95 DT')">Order Now</button>
             </div>
         </div>
 
         <div class="card">
             <div class="card-head">
-                <span class="region-tag">PSN Turkey</span>
-                <div class="value">2000 TL</div>
-                <span class="note">High balance gift card</span>
+                <span class="region-tag">PSN US</span>
+                <div class="value">30 USD</div>
+                <span class="note">US PlayStation Store credit</span>
             </div>
             <div class="card-bottom">
-                <div class="price">200 DT</div>
-                <button class="btn-buy" onclick="order('2000 TL PSN Turkey Gift Card', '200 DT')">Order Now</button>
+                <div class="price">111 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 30 USD', '111 DT')">Order Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-head">
+                <span class="region-tag">PSN US</span>
+                <div class="value">50 USD</div>
+                <span class="note">High balance US gift card</span>
+            </div>
+            <div class="card-bottom">
+                <div class="price">180 DT</div>
+                <button class="btn-buy" onclick="order('PSN US Gift Card - 50 USD', '180 DT')">Order Now</button>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>© 2026 ISM Game Store — Official PSN Reseller</p>
+    <p>© 2026 ISM Game Store — Fast & Secure Digital Services</p>
 </footer>
 
 <a class="messenger" href="https://m.me/61555974173704" target="_blank">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.908 1.462 5.5 3.746 7.225V22l3.356-1.843c.917.254 1.887.393 2.898.393 5.523 0 10-4.146 10-9.258S17.523 2 12 2zm1.293 12.303l-2.586-2.754-5.04 2.754 5.546-5.89 2.586 2.754 5.04-2.754-5.546 5.89z"/></svg>
 </a>
 
-
 <script>
 function order(product, price) {
-    const msg = encodeURIComponent(
+    let msg = encodeURIComponent(
 `Hello ISM STORE
 
 I'd like to place the following order:
@@ -415,5 +471,6 @@ Thank you!`
     window.open("https://m.me/61555974173704?text=" + msg, "_blank");
 }
 </script>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,118 +9,304 @@
     
     <style>
         :root {
-            --primary: #e50914; /* لون نتفليكس الرسمي */
+            --primary: #e50914;
+            --red-dark: #8a050d;
             --cyan: #00f7ff;
-            --bg-dark: #07080f;
-            --card-bg: rgba(20, 25, 40, 0.7);
+            --gold: #ffd166;
+            --bg-dark: #050509;
+            --card-bg: rgba(15, 16, 25, 0.84);
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
             background: var(--bg-dark);
             color: white; overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 10%, rgba(229, 9, 20, 0.1) 0%, transparent 40%);
         }
 
-        .container { width: 90%; max-width: 1000px; margin: auto; }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 16% 15%, rgba(229, 9, 20, 0.28), transparent 31%),
+                radial-gradient(circle at 86% 20%, rgba(0, 247, 255, 0.12), transparent 28%),
+                linear-gradient(145deg, #08080d 0%, #12050a 50%, #030307 100%);
+        }
 
-        /* ===== NAVIGATION ===== */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 96px),
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 96px);
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        .container { width: min(92%, 1040px); margin: auto; }
+
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(7, 8, 15, 0.85);
+            position: fixed; top: 0; left: 0; right: 0; width: 100%;
+            background: rgba(5, 5, 9, 0.86);
             backdrop-filter: blur(15px);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
-            border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+            gap: 18px;
+            padding: 15px 5%; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            color: var(--cyan); font-weight: bold; font-size: 1.2rem;
+            color: white; font-weight: bold; font-size: 1.12rem;
             text-decoration: none;
+            text-shadow: 0 0 16px rgba(229, 9, 20, 0.55);
+            white-space: nowrap;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .lang-toggle {
+            cursor: pointer;
+            font-size: 12px;
+            color: #fff;
+            border: 1px solid rgba(229, 9, 20, 0.34);
+            border-radius: 999px;
+            padding: 8px 12px;
+            background: rgba(229, 9, 20, 0.12);
         }
 
         .btn-home {
             color: #fff; text-decoration: none; font-size: 13px;
-            border: 1px solid var(--primary); padding: 8px 18px;
-            border-radius: 20px; transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.16); padding: 8px 18px;
+            border-radius: 8px; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .btn-home:hover { background: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        .btn-home:hover { background: var(--primary); box-shadow: 0 0 18px rgba(229, 9, 20, 0.55); }
 
-        /* ===== HEADER ===== */
-        .header { padding: 140px 20px 60px; text-align: center; }
-        .header h1 {
+        .header { padding: 138px 20px 58px; text-align: center; position: relative; overflow: hidden; }
+
+        .header::before {
+            content: "NETFLIX";
+            position: absolute;
+            left: 50%;
+            top: 74px;
+            transform: translateX(-50%);
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(24px, 6vw, 45px);
-            color: var(--primary); text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+            font-size: clamp(62px, 15vw, 156px);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.035);
+            pointer-events: none;
         }
-        .header p { color: #888; letter-spacing: 1px; margin-top: 10px; }
 
-        /* ===== GRID & CARDS ===== */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: rgba(229, 9, 20, 0.14);
+            border: 1px solid rgba(229, 9, 20, 0.36);
+            color: #ffdadd;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+        }
+
+        .header h1 {
+            position: relative;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(32px, 6vw, 56px);
+            color: #fff; text-shadow: 0 0 24px rgba(229, 9, 20, 0.7);
+        }
+
+        .header p {
+            position: relative;
+            color: #b8bfce;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 16px auto 0;
+            max-width: 650px;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; padding-bottom: 80px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px; padding-bottom: 74px;
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 45px 25px; border-radius: 24px;
-            text-align: center; transition: 0.4s;
-            position: relative;
+            min-height: 260px;
+            background:
+                linear-gradient(160deg, var(--card-bg), rgba(4, 4, 9, 0.96)),
+                linear-gradient(140deg, rgba(229,9,20,0.16), rgba(255,255,255,0.04));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 24px; border-radius: 8px;
+            text-align: left; transition: 0.28s ease;
+            position: relative; overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), #ffffff 55%, var(--red-dark));
+        }
+
+        .card::after {
+            content: "N";
+            position: absolute;
+            right: 18px;
+            bottom: -34px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 150px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.04);
+            pointer-events: none;
         }
 
         .card:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.2);
-            background: rgba(25, 30, 50, 0.9);
+            transform: translateY(-7px);
+            border-color: rgba(229, 9, 20, 0.42);
+            box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 24px rgba(229, 9, 20, 0.18);
+        }
+
+        .card-head, .card-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .plan-tag {
+            display: inline-flex;
+            margin-bottom: 16px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            color: white;
+            background: rgba(229, 9, 20, 0.9);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .card-icon {
-            font-size: 40px; margin-bottom: 20px;
-            display: block; filter: drop-shadow(0 0 10px var(--primary));
+            font-size: 34px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.55));
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 20px; margin-bottom: 10px; color: #fff;
+            font-size: 22px; margin: 0; color: #fff;
+            line-height: 1.15;
+        }
+
+        .note {
+            display: block;
+            margin-top: 11px;
+            color: #aeb8d0;
+            font-size: 13px;
         }
 
         .price {
-            font-size: 32px; color: var(--primary);
-            font-weight: 700; margin-bottom: 30px;
+            display: block;
+            font-size: 34px; color: var(--gold);
+            font-weight: 700; margin: 30px 0 17px;
             font-family: 'Orbitron', sans-serif;
+            line-height: 1;
+            text-shadow: 0 0 18px rgba(255, 209, 102, 0.28);
         }
 
         .btn-order {
-            background: var(--primary); border: none;
-            color: #fff; padding: 12px 35px; border-radius: 30px;
+            background: linear-gradient(90deg, var(--primary), var(--red-dark));
+            border: none;
+            color: #fff; padding: 13px 14px; border-radius: 8px;
             font-weight: bold; cursor: pointer; transition: 0.3s;
-            width: 100%; text-transform: uppercase; letter-spacing: 1px;
+            width: 100%; text-transform: uppercase; letter-spacing: 0;
+            font-size: 13px;
+            box-shadow: 0 12px 28px rgba(229, 9, 20, 0.18);
         }
 
         .btn-order:hover {
-            background: #fff; color: var(--primary);
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+            filter: brightness(1.1);
+            transform: translateY(-2px);
         }
 
-        /* ===== FOOTER ===== */
+        .featured {
+            border-color: rgba(255, 209, 102, 0.42);
+            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.32), 0 0 20px rgba(255, 209, 102, 0.1);
+        }
+
+        .badge {
+            position:absolute;
+            top:14px;
+            right:14px;
+            background:var(--gold);
+            color:#12060a;
+            font-size:10px;
+            padding:5px 9px;
+            border-radius:999px;
+            font-weight:bold;
+        }
+
         footer {
-            padding: 40px; background: #030408; text-align: center;
-            border-top: 1px solid rgba(229, 9, 20, 0.2); color: #555;
+            padding: 40px 20px; background: rgba(3, 4, 8, 0.78); text-align: center;
+            border-top: 1px solid rgba(229, 9, 20, 0.22); color: #7f89a0;
         }
 
-        /* ===== MESSENGER ===== */
         .messenger {
             position: fixed; bottom: 30px; right: 30px;
-            background: #0084ff; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #0084ff, #00f7ff); width: 60px; height: 60px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
             transition: 0.4s; z-index: 2000;
+        }
+
+        .messenger:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 32px rgba(0, 132, 255, 0.58);
+        }
+
+        @media (max-width: 720px) {
+            nav {
+                position: relative;
+                padding: 14px 18px;
+                align-items: flex-start;
+            }
+
+            .header { padding: 54px 18px 34px; }
+            .header::before { top: 8px; }
+            .grid { grid-template-columns: 1fr; padding-bottom: 54px; }
+            .card { min-height: 230px; padding: 22px; }
+            .price { font-size: 31px; }
+            .messenger {
+                width: 54px; height: 54px;
+                right: 18px; bottom: 18px;
+            }
         }
     </style>
 </head>
@@ -127,14 +314,15 @@
 
 <nav>
     <a href="index.html" class="logo">ISM STORE</a>
-    <div style="display: flex; gap: 15px; align-items: center;">
-        <span onclick="toggleLang()" style="cursor:pointer; font-size: 12px; color: var(--cyan);">AR | EN</span>
+    <div class="nav-actions">
+        <span onclick="toggleLang()" class="lang-toggle">AR | EN</span>
         <a href="index.html" class="btn-home">HOME</a>
     </div>
 </nav>
 
 <section class="header">
     <div class="container">
+        <div class="hero-badge">Netflix Premium</div>
         <h1 id="pageTitle">Netflix Premium 🎁</h1>
         <p id="subTitle">Ultra HD 4K • Anti-Screen Lock • High Stability</p>
     </div>
@@ -143,18 +331,34 @@
 <div class="container">
     <div class="grid">
         <div class="card">
-            <span class="card-icon">👤</span>
-            <h3 id="profileTitle">1 Profile (Shared)</h3>
-            <div class="price">15 DT</div>
-            <button class="btn-order" onclick="order('1 Profile (Shared)', '15 DT')" id="orderBtn1">Order Now</button>
+            <div class="card-head">
+                <span class="plan-tag">Shared Plan</span>
+                <div class="title-row">
+                    <span class="card-icon">👤</span>
+                    <h3 id="profileTitle">1 Profile (Shared)</h3>
+                </div>
+                <span class="note">Private profile access for daily streaming</span>
+            </div>
+            <div class="card-bottom">
+                <div class="price">15 DT</div>
+                <button class="btn-order" onclick="order('1 Profile (Shared)', '15 DT')" id="orderBtn1">Order Now</button>
+            </div>
         </div>
 
-        <div class="card" style="border-color: var(--primary);">
-            <div style="position:absolute; top:12px; right:12px; background:var(--primary); color:#fff; font-size:9px; padding:3px 10px; border-radius:5px; font-weight:bold;">BEST VALUE</div>
-            <span class="card-icon">📺</span>
-            <h3 id="fullTitle">Full Account (5 Profiles)</h3>
-            <div class="price">40 DT</div>
-            <button class="btn-order" onclick="order('Full Account (5 Profiles)', '40 DT')" id="orderBtn2">Order Now</button>
+        <div class="card featured">
+            <div class="badge">Best Value</div>
+            <div class="card-head">
+                <span class="plan-tag">Full Account</span>
+                <div class="title-row">
+                    <span class="card-icon">📺</span>
+                    <h3 id="fullTitle">Full Account (5 Profiles)</h3>
+                </div>
+                <span class="note">Complete account access for family streaming</span>
+            </div>
+            <div class="card-bottom">
+                <div class="price">40 DT</div>
+                <button class="btn-order" onclick="order('Full Account (5 Profiles)', '40 DT')" id="orderBtn2">Order Now</button>
+            </div>
         </div>
     </div>
 </div>

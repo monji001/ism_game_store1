@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,114 +9,325 @@
     
     <style>
         :root {
-            --ps-blue: #003791;
+            --ps-blue: #006fcd;
+            --ps-deep: #001a62;
             --primary: #00f7ff;
-            --essential: #e3e3e3;
+            --essential: #e8edf6;
             --extra: #ffc400;
-            --deluxe: #7000ff;
-            --bg-dark: #07080f;
-            --card-bg: rgba(20, 25, 40, 0.7);
+            --deluxe: #8b5cff;
+            --bg-dark: #050713;
+            --card-bg: rgba(10, 16, 35, 0.76);
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
             background: var(--bg-dark);
             color: white; overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 10%, rgba(0, 55, 145, 0.1) 0%, transparent 60%);
         }
 
-        .container { width: 90%; max-width: 1200px; margin: auto; }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 16% 14%, rgba(0, 111, 205, 0.32), transparent 32%),
+                radial-gradient(circle at 88% 18%, rgba(139, 92, 255, 0.2), transparent 30%),
+                linear-gradient(140deg, rgba(0, 26, 98, 0.88), #050713 52%, #03040a 100%);
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.032) 0 1px, transparent 1px 96px),
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.024) 0 1px, transparent 1px 96px);
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        .container { width: min(92%, 1200px); margin: auto; }
 
         /* ===== NAVIGATION ===== */
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(7, 8, 15, 0.85);
+            position: fixed; top: 0; left: 0; right: 0; width: 100%;
+            background: rgba(5, 7, 19, 0.86);
             backdrop-filter: blur(15px);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; z-index: 1000; box-sizing: border-box;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 18px;
+            padding: 15px 5%; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            color: white; font-weight: bold; font-size: 1.12rem;
             text-decoration: none;
+            text-shadow: 0 0 16px rgba(0, 247, 255, 0.55);
+            white-space: nowrap;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .lang-toggle {
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--primary);
+            border: 1px solid rgba(0, 247, 255, 0.22);
+            border-radius: 999px;
+            padding: 8px 12px;
+            background: rgba(0, 247, 255, 0.06);
         }
 
         .btn-home {
             color: #fff; text-decoration: none; font-size: 13px;
-            border: 1px solid var(--ps-blue); padding: 8px 18px;
-            border-radius: 20px; transition: 0.3s;
+            border: 1px solid rgba(0, 247, 255, 0.28); padding: 8px 18px;
+            border-radius: 8px; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .btn-home:hover { background: var(--ps-blue); box-shadow: 0 0 15px var(--ps-blue); }
+        .btn-home:hover { background: var(--ps-blue); box-shadow: 0 0 18px rgba(0, 111, 205, 0.55); }
 
         /* ===== HEADER ===== */
-        .header { padding: 140px 20px 40px; text-align: center; }
-        .header h1 {
+        .header { padding: 138px 20px 54px; text-align: center; position: relative; overflow: hidden; }
+
+        .header::before {
+            content: "PS+";
+            position: absolute;
+            left: 50%;
+            top: 76px;
+            transform: translateX(-50%);
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(24px, 5vw, 40px);
-            color: #fff; text-shadow: 0 0 20px rgba(0, 55, 145, 0.6);
+            font-size: clamp(82px, 18vw, 190px);
+            font-weight: 700;
+            letter-spacing: 0;
+            color: rgba(255, 255, 255, 0.035);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: rgba(0, 111, 205, 0.16);
+            border: 1px solid rgba(0, 247, 255, 0.24);
+            color: #bffcff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+        }
+
+        .header h1 {
+            position: relative;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            color: #fff; text-shadow: 0 0 24px rgba(0, 111, 205, 0.72);
+        }
+
+        .header p {
+            position: relative;
+            color: #aeb8d0;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 16px auto 0;
+            max-width: 620px;
         }
 
         /* ===== SECTIONS ===== */
         .section-title {
             display: flex; align-items: center; gap: 15px;
-            margin: 50px 0 25px; font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem; letter-spacing: 2px;
+            margin: 46px 0 18px; font-family: 'Orbitron', sans-serif;
+            font-size: 1.06rem; letter-spacing: 2px;
         }
-        .line { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.1); }
+        .section-title span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 13px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+        .line { flex-grow: 1; height: 1px; background: linear-gradient(90deg, currentColor, transparent); opacity: 0.44; }
 
         /* ===== GRID & CARDS ===== */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px; padding-bottom: 20px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px; padding-bottom: 10px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 20px; padding: 35px 20px;
-            text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            min-height: 230px;
+            background:
+                linear-gradient(160deg, var(--card-bg), rgba(3, 5, 14, 0.92)),
+                linear-gradient(140deg, rgba(255,255,255,0.12), transparent);
+            border-radius: 8px; padding: 24px;
+            text-align: left; border: 1px solid rgba(255, 255, 255, 0.09);
+            transition: 0.28s ease;
+            position: relative; overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
         }
 
-        .card:hover { transform: translateY(-10px); }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 4px;
+            background: currentColor;
+            opacity: 0.95;
+        }
 
-        .card h3 { font-size: 20px; margin: 0; color: #fff; }
-        .price { font-size: 26px; margin: 15px 0 25px; color: var(--primary); font-family: 'Orbitron'; font-weight: bold; }
+        .card::after {
+            content: "+";
+            position: absolute;
+            right: 16px;
+            bottom: -25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 120px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.035);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: currentColor;
+            box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42);
+        }
+
+        .card-head, .card-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tier-chip {
+            display: inline-flex;
+            margin-bottom: 16px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            color: #08101f;
+            background: currentColor;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .card h3 { font-size: 23px; margin: 0; color: #fff; line-height: 1.1; }
+        .duration-note {
+            display: block;
+            margin-top: 9px;
+            color: #aeb8d0;
+            font-size: 13px;
+        }
+
+        .price {
+            display: block;
+            font-size: 32px;
+            line-height: 1;
+            margin: 28px 0 17px;
+            color: white;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            text-shadow: 0 0 18px rgba(0, 247, 255, 0.24);
+        }
 
         /* Button Themes */
         .btn-buy {
-            width: 90%; padding: 12px; border-radius: 30px;
+            width: 100%; padding: 13px 14px; border-radius: 8px;
             border: none; font-weight: bold; cursor: pointer;
             transition: 0.3s; text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0;
         }
 
         /* Essential Color */
-        .essential-card:hover { border-color: var(--essential); box-shadow: 0 5px 20px rgba(227, 227, 227, 0.1); }
-        .btn-essential { background: var(--essential); color: black; }
+        .essential-card { color: var(--essential); }
+        .essential-card:hover { box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(232, 237, 246, 0.18); }
+        .essential-card .price { text-shadow: 0 0 18px rgba(232, 237, 246, 0.26); }
+        .btn-essential { background: var(--essential); color: #07101f; }
 
         /* Extra Color */
-        .extra-card:hover { border-color: var(--extra); box-shadow: 0 5px 20px rgba(255, 196, 0, 0.15); }
-        .btn-extra { background: var(--extra); color: black; }
+        .extra-card { color: var(--extra); }
+        .extra-card:hover { box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(255, 196, 0, 0.2); }
+        .extra-card .price { text-shadow: 0 0 18px rgba(255, 196, 0, 0.28); }
+        .btn-extra { background: var(--extra); color: #130f00; }
 
         /* Deluxe Color */
-        .deluxe-card:hover { border-color: var(--deluxe); box-shadow: 0 5px 20px rgba(112, 0, 255, 0.2); }
+        .deluxe-card { color: var(--deluxe); }
+        .deluxe-card:hover { box-shadow: 0 28px 58px rgba(0, 0, 0, 0.42), 0 0 22px rgba(139, 92, 255, 0.24); }
+        .deluxe-card .price { text-shadow: 0 0 18px rgba(139, 92, 255, 0.32); }
         .btn-deluxe { background: var(--deluxe); color: white; }
 
+        .btn-buy:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+
         /* ===== FOOTER ===== */
-        footer { padding: 50px; text-align: center; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer {
+            padding: 44px 20px;
+            margin-top: 58px;
+            text-align: center;
+            color: #7f89a0;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            background: rgba(3, 4, 10, 0.72);
+        }
 
         /* ===== MESSENGER ===== */
         .messenger {
             position: fixed; bottom: 30px; right: 30px;
-            background: #0084ff; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #0084ff, #00f7ff); width: 60px; height: 60px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
             z-index: 2000;
+            transition: 0.3s;
+        }
+
+        .messenger:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 32px rgba(0, 132, 255, 0.58);
+        }
+
+        @media (max-width: 880px) {
+            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                position: relative;
+                align-items: flex-start;
+                padding: 14px 18px;
+            }
+
+            .header { padding: 54px 18px 34px; }
+            .header::before { top: 5px; }
+            .grid { grid-template-columns: 1fr; }
+            .section-title { margin-top: 34px; }
+            .card { min-height: 210px; padding: 22px; }
+            .messenger {
+                width: 54px; height: 54px;
+                right: 18px; bottom: 18px;
+            }
         }
     </style>
 </head>
@@ -123,16 +335,17 @@
 
 <nav>
     <a href="index.html" class="logo">ISM STORE</a>
-    <div style="display: flex; gap: 15px; align-items: center;">
-        <span onclick="toggleLang()" style="cursor:pointer; font-size: 12px; color: var(--primary);">AR | EN</span>
+    <div class="nav-actions">
+        <span onclick="toggleLang()" class="lang-toggle">AR | EN</span>
         <a href="index.html" class="btn-home">HOME</a>
     </div>
 </nav>
 
 <section class="header">
     <div class="container">
+        <div class="hero-badge">PlayStation Plus</div>
         <h1 id="pageTitle">PS Plus Ukraine 🇺🇦</h1>
-        <p style="color: #666; font-size: 14px;">Instant Activation • Region Ukraine</p>
+        <p>Instant activation for Ukraine region accounts with Essential, Extra, and Deluxe plans.</p>
     </div>
 </section>
 
@@ -142,25 +355,25 @@
         <span>ESSENTIAL</span> <div class="line"></div>
     </div>
     <div class="grid">
-<div class="card essential-card"><h3>1 Month</h3><div class="price">35 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 1 Month', '35 DT')">Order Now</button></div>
-<div class="card essential-card"><h3>3 Months</h3><div class="price">75 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 3 Months', '75 DT')">Order Now</button></div>
-<div class="card essential-card"><h3>12 Months</h3><div class="price">150 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 12 Months', '150 DT')">Order Now</button></div>    </div>
+<div class="card essential-card"><div class="card-head"><span class="tier-chip">Essential</span><h3>1 Month</h3><span class="duration-note">Online multiplayer + monthly games</span></div><div class="card-bottom"><div class="price">35 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 1 Month', '35 DT')">Order Now</button></div></div>
+<div class="card essential-card"><div class="card-head"><span class="tier-chip">Essential</span><h3>3 Months</h3><span class="duration-note">Balanced short-term access</span></div><div class="card-bottom"><div class="price">75 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 3 Months', '75 DT')">Order Now</button></div></div>
+<div class="card essential-card"><div class="card-head"><span class="tier-chip">Essential</span><h3>12 Months</h3><span class="duration-note">Full year best value plan</span></div><div class="card-bottom"><div class="price">150 DT</div><button class="btn-buy btn-essential" onclick="order('PS Plus Essential - 12 Months', '150 DT')">Order Now</button></div></div>    </div>
 
     <div class="section-title" style="color: var(--extra);">
         <span>EXTRA</span> <div class="line"></div>
     </div>
     <div class="grid">
-<div class="card extra-card"><h3>1 Month</h3><div class="price">45 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 1 Month', '45 DT')">Order Now</button></div>
-<div class="card extra-card"><h3>3 Months</h3><div class="price">110 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 3 Months', '110 DT')">Order Now</button></div>
-<div class="card extra-card"><h3>12 Months</h3><div class="price">230 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 12 Months', '230 DT')">Order Now</button></div>    </div>
+<div class="card extra-card"><div class="card-head"><span class="tier-chip">Extra</span><h3>1 Month</h3><span class="duration-note">Game catalog access</span></div><div class="card-bottom"><div class="price">45 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 1 Month', '45 DT')">Order Now</button></div></div>
+<div class="card extra-card"><div class="card-head"><span class="tier-chip">Extra</span><h3>3 Months</h3><span class="duration-note">More time with the catalog</span></div><div class="card-bottom"><div class="price">110 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 3 Months', '110 DT')">Order Now</button></div></div>
+<div class="card extra-card"><div class="card-head"><span class="tier-chip">Extra</span><h3>12 Months</h3><span class="duration-note">Premium yearly gaming access</span></div><div class="card-bottom"><div class="price">230 DT</div><button class="btn-buy btn-extra" onclick="order('PS Plus Extra - 12 Months', '230 DT')">Order Now</button></div></div>    </div>
 
     <div class="section-title" style="color: var(--deluxe);">
         <span>DELUXE</span> <div class="line"></div>
     </div>
     <div class="grid">
-<div class="card deluxe-card"><h3>1 Month</h3><div class="price">50 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 1 Month', '50 DT')">Order Now</button></div>
-<div class="card deluxe-card"><h3>3 Months</h3><div class="price">120 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 3 Months', '120 DT')">Order Now</button></div>
-<div class="card deluxe-card"><h3>12 Months</h3><div class="price">265 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 12 Months', '265 DT')">Order Now</button></div>    </div>
+<div class="card deluxe-card"><div class="card-head"><span class="tier-chip">Deluxe</span><h3>1 Month</h3><span class="duration-note">Full Deluxe benefits</span></div><div class="card-bottom"><div class="price">50 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 1 Month', '50 DT')">Order Now</button></div></div>
+<div class="card deluxe-card"><div class="card-head"><span class="tier-chip">Deluxe</span><h3>3 Months</h3><span class="duration-note">Extended Deluxe access</span></div><div class="card-bottom"><div class="price">120 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 3 Months', '120 DT')">Order Now</button></div></div>
+<div class="card deluxe-card"><div class="card-head"><span class="tier-chip">Deluxe</span><h3>12 Months</h3><span class="duration-note">Best Deluxe yearly plan</span></div><div class="card-bottom"><div class="price">265 DT</div><button class="btn-buy btn-deluxe" onclick="order('PS Plus Deluxe - 12 Months', '265 DT')">Order Now</button></div></div>    </div>
 
 </div>
 
@@ -214,4 +427,3 @@ function toggleLang() {
 
 </body>
 </html>
-
