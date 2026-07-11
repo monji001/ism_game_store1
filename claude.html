@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Subscriptions | ISM Game Store</title>
+  <meta name="description" content="ChatGPT Plus and Claude AI subscription options from ISM Game Store." />
+  <style>
+    :root { --cyan: #63fff0; --violet: #b16cff; --amber: #ffb36a; --ink: #07080f; --muted: #b8c2d4; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; font-family: Arial, Helvetica, sans-serif; color: #fff; background: radial-gradient(circle at 84% 12%, rgba(177,108,255,.26), transparent 26%), radial-gradient(circle at 14% 24%, rgba(99,255,240,.18), transparent 24%), linear-gradient(135deg, #06141d, #0a1125 54%, #241135); }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px max(20px, 5vw); background: rgba(7,8,15,.86); border-bottom: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(14px); }
+    .brand { color: var(--cyan); font-weight: 800; letter-spacing: .04em; }
+    .back { padding: 9px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; font-size: .9rem; font-weight: 700; }
+    .page { width: min(1050px, 90%); margin: 0 auto; padding: 70px 0 58px; }
+    .hero { text-align: center; max-width: 700px; margin: 0 auto 42px; }
+    .eyebrow { display: inline-block; margin: 0 0 14px; padding: 8px 12px; border: 1px solid rgba(99,255,240,.34); border-radius: 999px; color: var(--cyan); background: rgba(99,255,240,.08); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 1; }
+    .copy { margin: 18px 0 0; color: var(--muted); line-height: 1.7; }
+    .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .plan { position: relative; overflow: hidden; min-height: 350px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(8,16,32,.82); box-shadow: 0 24px 55px rgba(0,0,0,.28); scroll-margin-top: 96px; }
+    .plan::before { content: ""; position: absolute; width: 190px; height: 190px; top: -75px; right: -48px; border-radius: 50%; background: radial-gradient(circle, rgba(99,255,240,.48), transparent 68%); }
+    .plan.claude::before { background: radial-gradient(circle, rgba(255,179,106,.48), transparent 68%); }
+    .tag { position: relative; z-index: 1; display: inline-block; padding: 7px 10px; border: 1px solid rgba(99,255,240,.28); border-radius: 999px; color: var(--cyan); background: rgba(99,255,240,.08); font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .claude .tag { border-color: rgba(255,179,106,.35); color: var(--amber); background: rgba(255,179,106,.08); }
+    h2 { position: relative; z-index: 1; margin: 22px 0 0; font-size: 2rem; }
+    .plan p { position: relative; z-index: 1; margin: 14px 0 0; color: var(--muted); line-height: 1.68; }
+    .details { position: relative; z-index: 1; display: grid; gap: 10px; margin: 28px 0; }
+    .detail { padding: 11px 12px; border: 1px solid rgba(255,255,255,.1); border-radius: 8px; background: rgba(255,255,255,.045); color: #e6edf8; font-size: .92rem; }
+    .price { position: relative; z-index: 1; margin-bottom: 14px; color: #ffd166; font-size: 1.14rem; font-weight: 800; }
+    .order { position: relative; z-index: 1; display: block; padding: 13px 15px; border-radius: 8px; color: #071119; background: var(--cyan); text-align: center; font-weight: 800; }
+    .claude .order { background: var(--amber); }
+    footer { padding: 28px 20px; border-top: 1px solid rgba(255,255,255,.1); color: #9aa6b9; text-align: center; font-size: .9rem; }
+    @media (max-width: 700px) { nav { padding: 14px 18px; } .page { width: min(100% - 36px, 1050px); padding-top: 48px; } .plans { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="index.html">ISM GAME STORE</a>
+    <a class="back" href="index.html#ai">Back to products</a>
+  </nav>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Premium access</p>
+      <h1>AI Subscriptions</h1>
+      <p class="copy">Choose the AI service you need. ISM Game Store confirms availability, account requirements, and the current price before payment.</p>
+    </section>
+    <section class="plans" aria-label="AI subscription plans">
+      <article class="plan" id="chatgpt-plus">
+        <div><span class="tag">AI Premium</span><h2>ChatGPT Plus</h2><p>Premium AI access for work, learning, writing, and creative projects.</p></div>
+        <div><div class="details"><div class="detail">Subscription details confirmed before order</div><div class="detail">Support available through Messenger</div></div><div class="price">Price on request</div><a class="order" href="https://m.me/61555974173704?ref=chatgpt-plus" target="_blank" rel="noopener">Order on Messenger</a></div>
+      </article>
+      <article class="plan claude" id="claude-ai">
+        <div><span class="tag">AI Premium</span><h2>Claude AI</h2><p>Premium AI subscription options with direct assistance before ordering.</p></div>
+        <div><div class="details"><div class="detail">Subscription details confirmed before order</div><div class="detail">Support available through Messenger</div></div><div class="price">Price on request</div><a class="order" href="https://m.me/61555974173704?ref=claude-ai" target="_blank" rel="noopener">Order on Messenger</a></div>
+      </article>
+    </section>
+  </main>
+  <footer>Copyright 2026 ISM Game Store</footer>
+</body>
+</html>
