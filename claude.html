@@ -1,64 +1,708 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Subscriptions | ISM Game Store</title>
-  <meta name="description" content="ChatGPT Plus and Claude AI subscription options from ISM Game Store." />
+  <title>Claude AI Pro | ISM Game Store</title>
+  <meta name="description" content="Get Claude AI Pro 1-month subscription from ISM Game Store. Fast delivery, pay in DT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --cyan: #63fff0; --violet: #b16cff; --amber: #ffb36a; --ink: #07080f; --muted: #b8c2d4; }
+    :root {
+      --primary: #00e5ff;
+      --claude: #d97757;
+      --claude-light: #f0956e;
+      --claude-glow: rgba(217, 119, 87, 0.22);
+      --gold: #ffd166;
+      --green: #35f29c;
+      --bg: #07080f;
+      --line: rgba(255, 255, 255, 0.1);
+      --muted: #aeb6c8;
+      --text: #f7fbff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+    }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; min-height: 100vh; font-family: Arial, Helvetica, sans-serif; color: #fff; background: radial-gradient(circle at 84% 12%, rgba(177,108,255,.26), transparent 26%), radial-gradient(circle at 14% 24%, rgba(99,255,240,.18), transparent 24%), linear-gradient(135deg, #06141d, #0a1125 54%, #241135); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 14%, rgba(217, 119, 87, 0.18), transparent 36%),
+        radial-gradient(circle at 88% 20%, rgba(240, 149, 110, 0.12), transparent 32%),
+        linear-gradient(135deg, #07080f 0%, #10100a 54%, #06070d 100%);
+      overflow-x: hidden;
+    }
+
     a { color: inherit; text-decoration: none; }
-    nav { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px max(20px, 5vw); background: rgba(7,8,15,.86); border-bottom: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(14px); }
-    .brand { color: var(--cyan); font-weight: 800; letter-spacing: .04em; }
-    .back { padding: 9px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; font-size: .9rem; font-weight: 700; }
-    .page { width: min(1050px, 90%); margin: 0 auto; padding: 70px 0 58px; }
-    .hero { text-align: center; max-width: 700px; margin: 0 auto 42px; }
-    .eyebrow { display: inline-block; margin: 0 0 14px; padding: 8px 12px; border: 1px solid rgba(99,255,240,.34); border-radius: 999px; color: var(--cyan); background: rgba(99,255,240,.08); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-    h1 { margin: 0; font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 1; }
-    .copy { margin: 18px 0 0; color: var(--muted); line-height: 1.7; }
-    .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .plan { position: relative; overflow: hidden; min-height: 350px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(8,16,32,.82); box-shadow: 0 24px 55px rgba(0,0,0,.28); scroll-margin-top: 96px; }
-    .plan::before { content: ""; position: absolute; width: 190px; height: 190px; top: -75px; right: -48px; border-radius: 50%; background: radial-gradient(circle, rgba(99,255,240,.48), transparent 68%); }
-    .plan.claude::before { background: radial-gradient(circle, rgba(255,179,106,.48), transparent 68%); }
-    .tag { position: relative; z-index: 1; display: inline-block; padding: 7px 10px; border: 1px solid rgba(99,255,240,.28); border-radius: 999px; color: var(--cyan); background: rgba(99,255,240,.08); font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .claude .tag { border-color: rgba(255,179,106,.35); color: var(--amber); background: rgba(255,179,106,.08); }
-    h2 { position: relative; z-index: 1; margin: 22px 0 0; font-size: 2rem; }
-    .plan p { position: relative; z-index: 1; margin: 14px 0 0; color: var(--muted); line-height: 1.68; }
-    .details { position: relative; z-index: 1; display: grid; gap: 10px; margin: 28px 0; }
-    .detail { padding: 11px 12px; border: 1px solid rgba(255,255,255,.1); border-radius: 8px; background: rgba(255,255,255,.045); color: #e6edf8; font-size: .92rem; }
-    .price { position: relative; z-index: 1; margin-bottom: 14px; color: #ffd166; font-size: 1.14rem; font-weight: 800; }
-    .order { position: relative; z-index: 1; display: block; padding: 13px 15px; border-radius: 8px; color: #071119; background: var(--cyan); text-align: center; font-weight: 800; }
-    .claude .order { background: var(--amber); }
-    footer { padding: 28px 20px; border-top: 1px solid rgba(255,255,255,.1); color: #9aa6b9; text-align: center; font-size: .9rem; }
-    @media (max-width: 700px) { nav { padding: 14px 18px; } .page { width: min(100% - 36px, 1050px); padding-top: 48px; } .plans { grid-template-columns: 1fr; } }
+    button { font: inherit; }
+
+    .container {
+      width: min(92%, 1000px);
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px min(5vw, 60px);
+      background: rgba(7, 8, 15, 0.84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      text-shadow: 0 0 18px rgba(0, 229, 255, 0.42);
+      white-space: nowrap;
+    }
+
+    .logo::before {
+      content: "IS";
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(0, 229, 255, 0.42);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(255, 49, 95, 0.14));
+      box-shadow: inset 0 0 18px rgba(0, 229, 255, 0.15);
+      color: #fff;
+      font-size: 0.78rem;
+    }
+
+    .btn-back {
+      min-height: 38px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      color: #061017;
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: clamp(46px, 8vw, 80px) 0 28px;
+    }
+
+    .header-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.9fr);
+      gap: clamp(26px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(217, 119, 87, 0.32);
+      border-radius: 999px;
+      color: var(--claude-light);
+      background: rgba(217, 119, 87, 0.08);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header h1 {
+      margin: 0 0 18px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      line-height: 1;
+      color: transparent;
+      background: linear-gradient(90deg, var(--claude-light), #fff, var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .header-note {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(0.92rem, 2vw, 1.05rem);
+      line-height: 1.7;
+    }
+
+    .header-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .badge-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.77rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .badge-info span { color: var(--text); font-weight: 700; }
+
+    .hero-art {
+      position: relative;
+      min-height: clamp(240px, 32vw, 400px);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(217, 119, 87, 0.1), rgba(255, 255, 255, 0.03));
+      box-shadow: var(--shadow), 0 0 60px rgba(217, 119, 87, 0.1);
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7, 8, 15, 0.72), transparent 55%);
+      pointer-events: none;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 52px 0 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-divider h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: #fff;
+    }
+
+    .section-divider p {
+      max-width: 360px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    /* ── PLAN CARD (centered single card) ── */
+    .plan-wrap {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 50px;
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      max-width: 680px;
+      padding: 30px;
+      border: 1px solid rgba(217, 119, 87, 0.26);
+      border-radius: 16px;
+      background: linear-gradient(160deg, rgba(217, 119, 87, 0.08), rgba(255, 255, 255, 0.025));
+      box-shadow: var(--shadow), 0 0 60px rgba(217, 119, 87, 0.1);
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .plan-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, var(--claude), var(--claude-light), var(--gold));
+    }
+
+    .plan-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% 30%;
+      height: 200px;
+      background: radial-gradient(circle, rgba(217, 119, 87, 0.14), transparent 68%);
+      pointer-events: none;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(217, 119, 87, 0.44);
+      box-shadow: 0 30px 80px rgba(217, 119, 87, 0.18);
+    }
+
+    /* Plan header */
+    .plan-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .plan-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid rgba(217, 119, 87, 0.32);
+      border-radius: 999px;
+      color: var(--claude-light);
+      background: rgba(217, 119, 87, 0.08);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .plan-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(217, 119, 87, 0.3);
+      border-radius: 12px;
+      background: rgba(217, 119, 87, 0.1);
+      font-size: 1.8rem;
+    }
+
+    .plan-name {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      line-height: 1;
+    }
+
+    /* Price box */
+    .price-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 22px;
+      border: 1px solid rgba(217, 119, 87, 0.3);
+      border-radius: 12px;
+      background: rgba(217, 119, 87, 0.07);
+    }
+
+    .price-left .price-label {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .price-left .price-period {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 3px;
+    }
+
+    .price-amount {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--claude-light);
+      line-height: 1;
+    }
+
+    /* Description */
+    .plan-desc {
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* Features */
+    .features-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 8px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.84rem;
+      color: var(--text);
+    }
+
+    /* Order buttons */
+    .btn-messenger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 52px;
+      padding: 14px 20px;
+      border: 0;
+      border-radius: 10px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--claude), var(--claude-light));
+      box-shadow: 0 14px 38px rgba(217, 119, 87, 0.32);
+      font-weight: 900;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-messenger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px rgba(217, 119, 87, 0.42);
+      filter: brightness(1.07);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 20px;
+      border: 1px solid rgba(37, 211, 102, 0.32);
+      border-radius: 10px;
+      color: #25d366;
+      background: rgba(37, 211, 102, 0.06);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      background: rgba(37, 211, 102, 0.13);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.2);
+    }
+
+    /* ── HOW TO ORDER ── */
+    .how-section {
+      margin: 0 0 50px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(217, 119, 87, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .how-section h2 {
+      margin: 0 0 24px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      color: var(--claude-light);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--claude), var(--claude-light));
+      color: #fff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .step h3 { margin: 0; font-size: 0.92rem; font-weight: 700; color: #fff; }
+    .step p { margin: 0; font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 20px;
+      padding: 30px min(5vw, 60px);
+      border-top: 1px solid var(--line);
+      color: rgba(255, 255, 255, 0.44);
+      background: rgba(3, 4, 8, 0.8);
+      text-align: center;
+      font-size: 0.84rem;
+    }
+
+    footer a { color: var(--claude-light); }
+
+    /* ── FLOATING BUTTONS ── */
+    .messenger-float {
+      position: fixed; right: 22px; bottom: 22px; z-index: 11;
+      display: grid; place-items: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #0084ff;
+      box-shadow: 0 14px 34px rgba(0, 132, 255, 0.38);
+      transition: transform 0.2s ease;
+    }
+    .messenger-float:hover { transform: translateY(-3px) scale(1.05); }
+
+    .whatsapp-float {
+      position: fixed; right: 90px; bottom: 22px; z-index: 11;
+      display: grid; place-items: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 14px 34px rgba(37, 211, 102, 0.32);
+      transition: transform 0.2s ease;
+    }
+    .whatsapp-float:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 860px) {
+      .header-grid { grid-template-columns: 1fr; }
+      .hero-art { min-height: 220px; order: -1; }
+      .section-divider { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .section-divider p { text-align: left; }
+      .how-section { padding: 20px 16px; }
+    }
+
+    @media (max-width: 580px) {
+      nav { padding: 12px 16px; }
+      .plan-card { padding: 20px 16px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .messenger-float { width: 52px; height: 52px; right: 14px; bottom: 14px; }
+      .whatsapp-float { width: 52px; height: 52px; right: 76px; bottom: 14px; }
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- ── NAV ── -->
   <nav>
-    <a class="brand" href="index.html">ISM GAME STORE</a>
-    <a class="back" href="index.html#ai">Back to products</a>
+    <a class="logo" href="index.html" aria-label="ISM Game Store home">
+      <span>Game Store</span>
+    </a>
+    <a class="btn-back" href="index.html">← Back to Store</a>
   </nav>
-  <main class="page">
-    <section class="hero">
-      <p class="eyebrow">Premium access</p>
-      <h1>AI Subscriptions</h1>
-      <p class="copy">Choose the AI service you need. ISM Game Store confirms availability, account requirements, and the current price before payment.</p>
-    </section>
-    <section class="plans" aria-label="AI subscription plans">
-      <article class="plan" id="chatgpt-plus">
-        <div><span class="tag">AI Premium</span><h2>ChatGPT Plus</h2><p>Premium AI access for work, learning, writing, and creative projects.</p></div>
-        <div><div class="details"><div class="detail">Subscription details confirmed before order</div><div class="detail">Support available through Messenger</div></div><div class="price">Price on request</div><a class="order" href="https://m.me/61555974173704?ref=chatgpt-plus" target="_blank" rel="noopener">Order on Messenger</a></div>
-      </article>
-      <article class="plan claude" id="claude-ai">
-        <div><span class="tag">AI Premium</span><h2>Claude AI</h2><p>Premium AI subscription options with direct assistance before ordering.</p></div>
-        <div><div class="details"><div class="detail">Subscription details confirmed before order</div><div class="detail">Support available through Messenger</div></div><div class="price">Price on request</div><a class="order" href="https://m.me/61555974173704?ref=claude-ai" target="_blank" rel="noopener">Order on Messenger</a></div>
-      </article>
-    </section>
+
+  <!-- ── HEADER ── -->
+  <section class="header">
+    <div class="container">
+      <div class="header-grid">
+        <div>
+          <p class="eyebrow">🧠 Anthropic AI</p>
+          <h1>Claude AI<br>Pro</h1>
+          <p class="header-note">
+            One of the most powerful AI assistants available. Claude Pro gives you advanced access for complex tasks, long documents, writing, and deep thinking — no limits holding you back.
+          </p>
+          <div class="header-badges">
+            <div class="badge-info">⚡ <span>Fast Activation</span></div>
+            <div class="badge-info">🔒 <span>Secure &amp; Trusted</span></div>
+            <div class="badge-info">💬 <span>24/7 Support</span></div>
+            <div class="badge-info">🇹🇳 <span>Pay in DT</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="assets/claude.png" alt="Claude AI Pro - ISM Game Store" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PLAN ── -->
+  <main>
+    <div class="container">
+
+      <div class="section-divider">
+        <h2>Available Plan</h2>
+        <p>1-month subscription. Price in Tunisian Dinar (DT).</p>
+      </div>
+
+      <div class="plan-wrap">
+        <article class="plan-card" id="claude-pro">
+
+          <div class="plan-top">
+            <div class="plan-tag">⭐ Premium AI</div>
+            <div class="plan-icon">🧠</div>
+          </div>
+
+          <h2 class="plan-name">Claude Pro</h2>
+
+          <div class="price-box">
+            <div class="price-left">
+              <div class="price-label">Monthly Price</div>
+              <div class="price-period">1 Month Subscription</div>
+            </div>
+            <div class="price-amount">80 DT</div>
+          </div>
+
+          <div class="plan-desc">
+            Claude Pro is Anthropic's most capable AI assistant — designed for people who need more power, more context, and more reliability. Whether you're writing, researching, coding, or analyzing long documents, Claude Pro handles it all with intelligence and clarity.
+          </div>
+
+          <div>
+            <div class="features-title">What's included</div>
+            <div class="features-grid">
+              <div class="feature-item">✅ Access to Claude's most powerful models</div>
+              <div class="feature-item">✅ Much higher usage limits than free plan</div>
+              <div class="feature-item">✅ Long document analysis &amp; summarizing</div>
+              <div class="feature-item">✅ Advanced writing &amp; creative tasks</div>
+              <div class="feature-item">✅ Deep reasoning &amp; complex problem solving</div>
+              <div class="feature-item">✅ Coding assistance &amp; debugging</div>
+              <div class="feature-item">✅ Priority access — less waiting</div>
+              <div class="feature-item">✅ 1 month full Pro access</div>
+            </div>
+          </div>
+
+          <a class="btn-messenger"
+             href="https://m.me/61555974173704?text=Hello%20ISM%20STORE%0A%0AI%27d%20like%20to%20place%20the%20following%20order%3A%0A%0A-------------------------------%0AORDER%20INFORMATION%0A%0AProduct%3A%0AClaude%20AI%20Pro%20%E2%80%93%201%20Month%20Plan%0APrice%3A%2080%20DT%0A-------------------------------%0A%0APlease%20send%20me%20the%20payment%20details%20and%20I%27ll%20complete%20my%20order%20right%20away.%0A%0AThank%20you!"
+             target="_blank" rel="noopener">
+            💬 Order on Messenger
+          </a>
+          <a class="btn-whatsapp"
+             href="https://wa.me/21628534734?text=Hello%20ISM%20STORE%0A%0AI%27d%20like%20to%20place%20the%20following%20order%3A%0A%0A-------------------------------%0AORDER%20INFORMATION%0A%0AProduct%3A%0AClaude%20AI%20Pro%20%E2%80%93%201%20Month%20Plan%0APrice%3A%2080%20DT%0A-------------------------------%0A%0APlease%20send%20me%20the%20payment%20details%20and%20I%27ll%20complete%20my%20order%20right%20away.%0A%0AThank%20you!"
+             target="_blank" rel="noopener">
+            📱 Order on WhatsApp
+          </a>
+
+        </article>
+      </div>
+
+      <!-- ── HOW TO ORDER ── -->
+      <div class="how-section">
+        <h2>🛒 How to Order</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Click Order</h3>
+            <p>Tap "Order on Messenger" or "Order on WhatsApp" — the message is already filled!</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Send the Message</h3>
+            <p>Just hit send — we'll reply right away with payment details.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Pay &amp; Confirm</h3>
+            <p>Complete the payment through your preferred method in DT.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Access Activated</h3>
+            <p>Your Claude Pro subscription is activated fast — start using it right away!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
-  <footer>Copyright 2026 ISM Game Store</footer>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2025 <strong>ISM Game Store</strong> — All rights reserved. Digital subscriptions delivered fast &amp; secure.</p>
+    <p style="margin-top:8px;">Questions? Contact us on
+      <a href="https://m.me/61555974173704" target="_blank">Messenger</a> or
+      <a href="https://wa.me/21628534734" target="_blank">WhatsApp</a>
+    </p>
+  </footer>
+
+  <!-- ── FLOATING BUTTONS ── -->
+  <a class="messenger-float" href="https://m.me/61555974173704" target="_blank" rel="noopener" aria-label="Chat on Messenger">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <path d="M14 2C7.373 2 2 7.1 2 13.4c0 3.5 1.6 6.6 4.2 8.7V26l4-2.2c1.1.3 2.5.5 3.8.5 6.627 0 12-5.1 12-11.4S20.627 2 14 2z" fill="white"/>
+      <path d="M7.6 16.6l3.4-3.6 1.6 1.6 3.2-1.6 3.4 3.6-3.4-1.2-1.6 1.6-1.6-1.6-3 1.2z" fill="#0084ff"/>
+    </svg>
+  </a>
+
+  <a class="whatsapp-float" href="https://wa.me/21628534734" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="white">
+      <path d="M16 2C8.268 2 2 8.268 2 16c0 2.432.654 4.709 1.793 6.672L2 30l7.518-1.766A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm7.18 19.386c-.302.848-1.76 1.618-2.432 1.72-.616.094-1.388.134-2.24-.14-.516-.166-1.178-.388-2.024-.76C13.37 21.11 11.1 18.58 10.94 18.374c-.158-.204-1.288-1.71-1.288-3.262s.814-2.316 1.102-2.632c.288-.316.628-.396.838-.396l.598.012c.192.008.45-.074.706.536.264.628.896 2.178.974 2.336.08.156.132.338.026.544-.104.204-.158.332-.314.51-.158.18-.332.4-.474.538-.158.156-.322.326-.138.64.184.316.816 1.344 1.754 2.178 1.204 1.074 2.218 1.406 2.534 1.562.316.158.5.132.684-.08.186-.212.794-.926.006-.8 1.004-.396 1.606-.626 1.786-.626.334 0 2.138 1.314 2.508 1.554.37.24.616.356.706.554.094.198.094 1.148-.208 1.994z"/>
+    </svg>
+  </a>
+
 </body>
 </html>
