@@ -397,6 +397,105 @@
       left: 14px;
     }
 
+    /* ─── Promo Styles ─────────────────────────────────────── */
+    .promo-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 22px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(255, 49, 95, 0.1), rgba(255, 209, 102, 0.13), rgba(255, 49, 95, 0.1));
+      color: var(--gold);
+      font-weight: 700;
+      font-size: clamp(0.88rem, 2.5vw, 1.05rem);
+      text-align: center;
+      letter-spacing: 0.04em;
+      animation: pulse-border 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(255, 209, 102, 0.3); box-shadow: none; }
+      50% { border-color: rgba(255, 209, 102, 0.7); box-shadow: 0 0 22px rgba(255, 209, 102, 0.14); }
+    }
+
+    .card.promo-card::before {
+      background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
+      background-size: 200% 100%;
+      animation: shimmer 2.5s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .promo-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      color: #061017;
+      font-size: 0.62rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    html[dir="rtl"] .promo-tag {
+      right: auto;
+      left: 14px;
+    }
+
+    .price.has-promo {
+      border-color: rgba(255, 209, 102, 0.4);
+      background: rgba(255, 209, 102, 0.08);
+    }
+
+    .price.has-promo strong {
+      color: var(--gold);
+    }
+
+    .price-label-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .price-new-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .price-old {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      opacity: 0.65;
+    }
+
+    .promo-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      color: #061017;
+      font-size: 0.58rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
     .pack-details {
       position: relative;
       z-index: 1;
@@ -610,59 +709,95 @@
 </section>
 
 <main class="container">
+  <!-- Promo Banner -->
+  <div class="promo-banner" id="promoBanner">
+    🔥 &nbsp;PROMO EFOOTBALL COINS &nbsp;— &nbsp;Prix spéciaux disponibles maintenant !
+  </div>
+
   <div class="section-divider">
     <h2 id="sectionTitle">Standard Recharge</h2>
     <p id="sectionNote">Choose your coins pack and send the order directly through Messenger.</p>
   </div>
 
   <div class="grid">
+    <!-- 130 coins — prix normal -->
     <div class="card">
       <h3>130 <span class="coin-icon">&#x1FA99;</span></h3>
       <div class="price"><span class="price-label">Price</span><strong>6 DT</strong></div>
       <button class="btn-order" onclick="order('130 Coins Standard Pack', '6 DT')">ORDER NOW</button>
     </div>
 
+    <!-- 300 coins — prix normal -->
     <div class="card">
       <h3>300 <span class="coin-icon">&#x1FA99;</span></h3>
       <div class="price"><span class="price-label">Price</span><strong>15 DT</strong></div>
       <button class="btn-order" onclick="order('300 Coins Standard Pack', '15 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 550 coins — PROMO 23 DT → 20 DT -->
+    <div class="card promo-card">
+      <span class="promo-tag">🔥 PROMO</span>
       <h3>550 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>23 DT</strong></div>
-      <button class="btn-order" onclick="order('550 Coins Standard Pack', '23 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">23 DT</span><strong>20 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('550 Coins — PROMO', '20 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 750 coins — PROMO 28 DT → 25 DT -->
+    <div class="card promo-card">
+      <span class="promo-tag">🔥 PROMO</span>
       <h3>750 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>28 DT</strong></div>
-      <button class="btn-order" onclick="order('750 Coins Standard Pack', '28 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">28 DT</span><strong>25 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('750 Coins — PROMO', '25 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 1040 coins — PROMO 38 DT → 35 DT -->
+    <div class="card promo-card">
+      <span class="promo-tag">🔥 PROMO</span>
       <h3>1040 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>38 DT</strong></div>
-      <button class="btn-order" onclick="order('1040 Coins Standard Pack', '38 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">38 DT</span><strong>35 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('1040 Coins — PROMO', '35 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 2130 coins — PROMO 75 DT → 65 DT -->
+    <div class="card promo-card">
+      <span class="promo-tag">🔥 PROMO</span>
       <h3>2130 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>75 DT</strong></div>
-      <button class="btn-order" onclick="order('2130 Coins Standard Pack', '75 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">75 DT</span><strong>65 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('2130 Coins — PROMO', '65 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 3250 coins — PROMO 110 DT → 95 DT -->
+    <div class="card promo-card">
+      <span class="promo-tag">🔥 PROMO</span>
       <h3>3250 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>110 DT</strong></div>
-      <button class="btn-order" onclick="order('3250 Coins Standard Pack', '110 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">110 DT</span><strong>95 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('3250 Coins — PROMO', '95 DT')">ORDER NOW</button>
     </div>
 
-    <div class="card">
+    <!-- 5700 coins — PROMO 175 DT → 155 DT -->
+    <div class="card promo-card">
       <span class="best-tag">Best Value</span>
       <h3>5700 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price"><span class="price-label">Price</span><strong>175 DT</strong></div>
-      <button class="btn-order" onclick="order('5700 Coins Standard Premium Pack', '175 DT')">ORDER NOW</button>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <div class="price-new-row"><span class="price-old">175 DT</span><strong>155 DT</strong></div>
+      </div>
+      <button class="btn-order" onclick="order('5700 Coins — PROMO', '155 DT')">ORDER NOW</button>
     </div>
   </div>
 
