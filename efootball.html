@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -254,6 +255,19 @@
       text-shadow: 0 0 18px rgba(255, 49, 95, 0.28);
     }
 
+    .section-divider.starter-promo {
+      margin-top: 0;
+    }
+
+    .section-divider.starter-promo h2 {
+      color: var(--gold);
+      text-shadow: 0 0 18px rgba(255, 209, 102, 0.28);
+    }
+
+    .section-divider.coin-packs {
+      margin-top: 38px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -397,105 +411,6 @@
       left: 14px;
     }
 
-    /* ─── Promo Styles ─────────────────────────────────────── */
-    .promo-banner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 15px 22px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 209, 102, 0.35);
-      border-radius: 8px;
-      background: linear-gradient(90deg, rgba(255, 49, 95, 0.1), rgba(255, 209, 102, 0.13), rgba(255, 49, 95, 0.1));
-      color: var(--gold);
-      font-weight: 700;
-      font-size: clamp(0.88rem, 2.5vw, 1.05rem);
-      text-align: center;
-      letter-spacing: 0.04em;
-      animation: pulse-border 2.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-border {
-      0%, 100% { border-color: rgba(255, 209, 102, 0.3); box-shadow: none; }
-      50% { border-color: rgba(255, 209, 102, 0.7); box-shadow: 0 0 22px rgba(255, 209, 102, 0.14); }
-    }
-
-    .card.promo-card::before {
-      background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
-      background-size: 200% 100%;
-      animation: shimmer 2.5s linear infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .promo-tag {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 2;
-      padding: 5px 10px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      color: #061017;
-      font-size: 0.62rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    html[dir="rtl"] .promo-tag {
-      right: auto;
-      left: 14px;
-    }
-
-    .price.has-promo {
-      border-color: rgba(255, 209, 102, 0.4);
-      background: rgba(255, 209, 102, 0.08);
-    }
-
-    .price.has-promo strong {
-      color: var(--gold);
-    }
-
-    .price-label-row {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-
-    .price-new-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .price-old {
-      font-family: "Orbitron", sans-serif;
-      font-size: 1rem;
-      color: var(--muted);
-      text-decoration: line-through;
-      opacity: 0.65;
-    }
-
-    .promo-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      color: #061017;
-      font-size: 0.58rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
     .pack-details {
       position: relative;
       z-index: 1;
@@ -525,6 +440,12 @@
     .pack-details ul {
       margin: 0;
       padding-left: 18px;
+    }
+
+    .pack-details strong,
+    .skill-highlight {
+      color: var(--gold);
+      font-weight: 900;
     }
 
     html[dir="rtl"] .pack-details ul {
@@ -709,145 +630,99 @@
 </section>
 
 <main class="container">
-  <!-- Promo Banner -->
-  <div class="promo-banner" id="promoBanner">
-    🔥 &nbsp;PROMO EFOOTBALL COINS &nbsp;— &nbsp;Prix spéciaux disponibles maintenant !
+  <div class="section-divider starter-promo">
+    <h2 id="starterTitle">Featured Starter Packs</h2>
+    <p id="starterNote">Start strong with player sets, coins, and flexible local payment.</p>
   </div>
 
-  <!-- ══ SECTION PROMO LIMITÉE ══ -->
-  <div class="section-divider limited-promo" id="promoSection">
-    <h2>🔥 Offres PROMO — Coins Spéciaux</h2>
-    <p id="promoCountdownDisplay">Expire dans : <strong id="promoGlobalTimer">--d --h --m --s</strong></p>
+  <div class="grid starter-grid">
+    <div class="card limited-card starter-card">
+      <span class="best-tag">Starter</span>
+      <h3 id="packTitleSuarez">Luis Suárez Starter Set</h3>
+      <div class="pack-details">
+        <span class="pack-label">Contents:</span>
+        <ul>
+          <li>Luis Suárez</li>
+          <li>50 eFootball Coins &#x1FA99;</li>
+          <li>D17 / Flouci / IZI, or 1 Orange recharge card</li>
+          <li><span class="skill-highlight">Blitz Curler Skill</span> for dangerous curled finishes</li>
+        </ul>
+      </div>
+      <div class="price"><span class="price-label">Price</span><strong>5 DT</strong></div>
+      <button class="btn-order" onclick="order('Luis Suárez Starter Set', '5 DT')">ORDER NOW</button>
+    </div>
+
+    <div class="card limited-card starter-card">
+      <span class="best-tag">Premium</span>
+      <h3 id="packTitleCasillas">Iker Casillas Starter Set</h3>
+      <div class="pack-details">
+        <span class="pack-label">Contents:</span>
+        <ul>
+          <li>Iker Casillas</li>
+          <li>100 eFootball Coins &#x1FA99;</li>
+          <li>Nicolò Barella with <span class="skill-highlight">Blitz Curler Skill</span></li>
+          <li>Michael Olise + Marc Guéhi</li>
+          <li>D17 / Flouci / IZI, or 3 Orange recharge cards</li>
+        </ul>
+      </div>
+      <div class="price"><span class="price-label">Price</span><strong>13 DT</strong></div>
+      <button class="btn-order" onclick="order('Iker Casillas Starter Set', '13 DT')">ORDER NOW</button>
+    </div>
   </div>
 
-  <div class="grid" id="promoGrid">
-
-    <!-- PROMO 1 : 260 coins -->
-    <div class="card promo-card" id="promoCard260">
-      <span class="promo-tag">🔥 PROMO</span>
-      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
-      <h3>260 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="countdown-box">&#9201; <span id="timer-promo260">--d --h --m --s</span></div>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <strong>6 DT</strong>
-      </div>
-      <button class="btn-order" onclick="order('260 Coins — PROMO (1 seul fois)', '6 DT')">ORDER NOW</button>
-    </div>
-
-    <!-- PROMO 2 : 840 coins -->
-    <div class="card promo-card" id="promoCard840">
-      <span class="promo-tag">🔥 PROMO</span>
-      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
-      <h3>840 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="countdown-box">&#9201; <span id="timer-promo840">--d --h --m --s</span></div>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <strong>20 DT</strong>
-      </div>
-      <button class="btn-order" onclick="order('840 Coins — PROMO (1 seul fois)', '20 DT')">ORDER NOW</button>
-    </div>
-
-    <!-- PROMO 3 : 1630 coins -->
-    <div class="card promo-card" id="promoCard1630">
-      <span class="promo-tag">🔥 PROMO</span>
-      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
-      <h3>1630 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="countdown-box">&#9201; <span id="timer-promo1630">--d --h --m --s</span></div>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <strong>35 DT</strong>
-      </div>
-      <button class="btn-order" onclick="order('1630 Coins — PROMO (1 seul fois)', '35 DT')">ORDER NOW</button>
-    </div>
-
-  </div>
-  <!-- ══ FIN SECTION PROMO ══ -->
-
-  <div class="section-divider">
+  <div class="section-divider coin-packs">
     <h2 id="sectionTitle">Standard Recharge</h2>
     <p id="sectionNote">Choose your coins pack and send the order directly through Messenger.</p>
   </div>
 
   <div class="grid">
-    <!-- 130 coins — prix normal -->
     <div class="card">
       <h3>130 <span class="coin-icon">&#x1FA99;</span></h3>
       <div class="price"><span class="price-label">Price</span><strong>6 DT</strong></div>
       <button class="btn-order" onclick="order('130 Coins Standard Pack', '6 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 300 coins — prix normal -->
     <div class="card">
       <h3>300 <span class="coin-icon">&#x1FA99;</span></h3>
       <div class="price"><span class="price-label">Price</span><strong>15 DT</strong></div>
       <button class="btn-order" onclick="order('300 Coins Standard Pack', '15 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 550 coins — PROMO 23 DT → 20 DT -->
-    <div class="card promo-card">
-      <span class="promo-tag">🔥 PROMO</span>
+    <div class="card">
       <h3>550 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">23 DT</span><strong>20 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('550 Coins — PROMO', '20 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>23 DT</strong></div>
+      <button class="btn-order" onclick="order('550 Coins Standard Pack', '23 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 750 coins — PROMO 28 DT → 25 DT -->
-    <div class="card promo-card">
-      <span class="promo-tag">🔥 PROMO</span>
+    <div class="card">
       <h3>750 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">28 DT</span><strong>25 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('750 Coins — PROMO', '25 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>28 DT</strong></div>
+      <button class="btn-order" onclick="order('750 Coins Standard Pack', '28 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 1040 coins — PROMO 38 DT → 35 DT -->
-    <div class="card promo-card">
-      <span class="promo-tag">🔥 PROMO</span>
+    <div class="card">
       <h3>1040 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">38 DT</span><strong>35 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('1040 Coins — PROMO', '35 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>38 DT</strong></div>
+      <button class="btn-order" onclick="order('1040 Coins Standard Pack', '38 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 2130 coins — PROMO 75 DT → 70 DT -->
-    <div class="card promo-card">
-      <span class="promo-tag">🔥 PROMO</span>
+    <div class="card">
       <h3>2130 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">75 DT</span><strong>70 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('2130 Coins — PROMO', '70 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>75 DT</strong></div>
+      <button class="btn-order" onclick="order('2130 Coins Standard Pack', '75 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 3250 coins — PROMO 110 DT → 100 DT -->
-    <div class="card promo-card">
-      <span class="promo-tag">🔥 PROMO</span>
+    <div class="card">
       <h3>3250 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">110 DT</span><strong>100 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('3250 Coins — PROMO', '100 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>110 DT</strong></div>
+      <button class="btn-order" onclick="order('3250 Coins Standard Pack', '110 DT')">ORDER NOW</button>
     </div>
 
-    <!-- 5700 coins — PROMO 175 DT → 160 DT -->
-    <div class="card promo-card">
+    <div class="card">
       <span class="best-tag">Best Value</span>
       <h3>5700 <span class="coin-icon">&#x1FA99;</span></h3>
-      <div class="price has-promo">
-        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
-        <div class="price-new-row"><span class="price-old">175 DT</span><strong>160 DT</strong></div>
-      </div>
-      <button class="btn-order" onclick="order('5700 Coins — PROMO', '160 DT')">ORDER NOW</button>
+      <div class="price"><span class="price-label">Price</span><strong>175 DT</strong></div>
+      <button class="btn-order" onclick="order('5700 Coins Standard Premium Pack', '175 DT')">ORDER NOW</button>
     </div>
   </div>
 
@@ -942,10 +817,14 @@ Thank you!`
     en: {
       title: "eFootball Mobile Coins",
       note: "Official mobile coins and limited packs with clear prices.",
+      starterTitle: "Featured Starter Packs",
+      starterNote: "Start strong with player sets, coins, and flexible local payment.",
       sectionTitle: "Standard Recharge",
       sectionNote: "Choose your coins pack and send the order directly through Messenger.",
       limitedTitle: "Limited Special Offers",
       limitedNote: "Special packs stay visible while their timers are still active.",
+      suarezTitle: "Luis Suárez Starter Set",
+      casillasTitle: "Iker Casillas Starter Set",
       nunezTitle: "Starter Set: Darwin Núñez",
       alabaTitle: "Starter Set: David Alaba",
       mourinhoTitle: "Mourinho Set",
@@ -956,10 +835,14 @@ Thank you!`
     ar: {
       title: "كوينز eFootball موبايل",
       note: "كوينز وباقات محدودة بأسعار واضحة.",
+      starterTitle: "باقات البداية المميزة",
+      starterNote: "ابدأ بقوة مع لاعبين، كوينز، وطرق دفع محلية مرنة.",
       sectionTitle: "شحن عادي",
       sectionNote: "اختار الباقة وابعت الطلب مباشرة عبر Messenger.",
       limitedTitle: "عروض خاصة لفترة محدودة",
       limitedNote: "العروض تبقى ظاهرة ما دام الوقت متاح.",
+      suarezTitle: "مجموعة البداية: لويس سواريز",
+      casillasTitle: "مجموعة البداية: إيكر كاسياس",
       nunezTitle: "مجموعة البداية: داروين نونيز",
       alabaTitle: "مجموعة البداية: ديفيد ألابا",
       mourinhoTitle: "مجموعة مورينيو",
@@ -976,10 +859,14 @@ Thank you!`
 
     document.getElementById("pageTitle").innerText = langData[lang].title;
     document.getElementById("pageNote").innerText = langData[lang].note;
+    document.getElementById("starterTitle").innerText = langData[lang].starterTitle;
+    document.getElementById("starterNote").innerText = langData[lang].starterNote;
     document.getElementById("sectionTitle").innerText = langData[lang].sectionTitle;
     document.getElementById("sectionNote").innerText = langData[lang].sectionNote;
     document.getElementById("limitedTitle").innerText = langData[lang].limitedTitle;
     document.getElementById("limitedNote").innerText = langData[lang].limitedNote;
+    document.getElementById("packTitleSuarez").innerText = langData[lang].suarezTitle;
+    document.getElementById("packTitleCasillas").innerText = langData[lang].casillasTitle;
     document.getElementById("packTitleNunez").innerText = langData[lang].nunezTitle;
     document.getElementById("packTitleAlaba").innerText = langData[lang].alabaTitle;
     document.getElementById("packTitleMourinho").innerText = langData[lang].mourinhoTitle;
@@ -997,8 +884,6 @@ Thank you!`
 
   const deadlineNunezAlaba = new Date("2026-07-30T02:00:00+01:00").getTime();
   const deadlineMourinho = new Date("2026-08-06T02:00:00+01:00").getTime();
-  // ── PROMO SPÉCIALE 3 OFFRES (expire 27 Aug 2026 ~01:10 UTC) ──
-  const deadlinePromoCoins = new Date("2026-08-27T01:10:00Z").getTime();
 
   function renderLiveTimers() {
     const currentTime = Date.now();
@@ -1006,22 +891,6 @@ Thank you!`
     displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-nunez"));
     displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-alaba"));
     displayCalculatedTime(deadlineMourinho - currentTime, document.getElementById("timer-mourinho"));
-
-    // Timers pour les 3 offres promo coins
-    displayCalculatedTime(deadlinePromoCoins - currentTime, document.getElementById("timer-promo260"));
-    displayCalculatedTime(deadlinePromoCoins - currentTime, document.getElementById("timer-promo840"));
-    displayCalculatedTime(deadlinePromoCoins - currentTime, document.getElementById("timer-promo1630"));
-
-    // Si toutes les 3 cartes promo sont cachées → cacher toute la section
-    const promoGrid = document.getElementById("promoGrid");
-    const promoSection = document.getElementById("promoSection");
-    if (promoGrid && promoSection) {
-      const visibleCards = promoGrid.querySelectorAll(".card:not([style*='display: none'])");
-      if (visibleCards.length === 0) {
-        promoGrid.style.display = "none";
-        promoSection.style.display = "none";
-      }
-    }
   }
 
   function displayCalculatedTime(distance, element) {
