@@ -604,6 +604,129 @@
         height: 54px;
       }
     }
+
+    /* ── PLATFORM NOTICE ── */
+    .platform-notice {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 32px;
+      padding: 20px 24px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 180, 0, 0.55);
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.13), rgba(255, 49, 95, 0.1));
+      box-shadow: 0 0 32px rgba(255, 160, 0, 0.12);
+    }
+
+    .platform-notice-icon {
+      font-size: 2.6rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .platform-notice-body strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+      color: #ffb400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .platform-notice-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+      line-height: 1.65;
+    }
+
+    .platform-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .platform-pill.android {
+      background: rgba(61, 220, 132, 0.15);
+      border: 1px solid rgba(61, 220, 132, 0.45);
+      color: #3ddc84;
+    }
+
+    .platform-pill.ios {
+      background: rgba(120, 160, 255, 0.15);
+      border: 1px solid rgba(120, 160, 255, 0.45);
+      color: #78a0ff;
+    }
+
+    .platform-pill .pill-emoji {
+      font-size: 1.1rem;
+    }
+
+    .platform-notice-sep {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,49,95,0.18);
+      border: 1px solid rgba(255,49,95,0.4);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    @media (max-width: 560px) {
+      .platform-notice {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .platform-notice-icon { display: none; }
+    }
+
+    /* ── NEW PROMO SECTION ── */
+    .new-promo-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      background: linear-gradient(90deg, rgba(255,49,95,0.1), rgba(255,209,102,0.12), rgba(255,49,95,0.1));
+      animation: pulse-border 2.4s ease-in-out infinite;
+    }
+
+    .new-promo-header h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      color: var(--gold);
+      letter-spacing: 0;
+    }
+
+    .new-promo-header .promo-expires {
+      margin-left: auto;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -630,6 +753,102 @@
 </section>
 
 <main class="container">
+
+  <!-- ══ PLATFORM NOTICE: Android ≠ iOS ══ -->
+  <div class="platform-notice" role="alert" aria-label="Important platform notice">
+    <div class="platform-notice-icon">⚠️</div>
+    <div class="platform-notice-body">
+      <strong>⚠️ Coins Android ≠ Coins iOS — Plateformes Séparées !</strong>
+      <p>
+        Les eFootball Coins achetés sur <strong style="color:#3ddc84">Android</strong> ne fonctionnent <strong>PAS</strong> sur <strong style="color:#78a0ff">iOS (iPhone)</strong> et vice-versa.
+        Chaque plateforme a son propre compte de coins. Précise ta plateforme lors de ta commande.
+      </p>
+      <div class="platform-row">
+        <span class="platform-pill android"><span class="pill-emoji">🤖</span> Android</span>
+        <span class="platform-notice-sep">≠</span>
+        <span class="platform-pill ios"><span class="pill-emoji">🍎</span> iOS / iPhone</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NOUVELLES OFFRES PROMO — THIERRY HENRY ══ -->
+  <div class="new-promo-header" id="henryPromoSection">
+    <span style="font-size:1.5rem">🔥</span>
+    <h2>Offres PROMO — Pack Thierry Henry</h2>
+    <span class="promo-expires">⏳ Expire : <span id="henryGlobalTimer">--d --h --m --s</span></span>
+  </div>
+
+  <div class="grid" id="henryPromoGrid">
+
+    <!-- PROMO Henry 1 : 500 Coins -->
+    <div class="card promo-card" id="henryCard500">
+      <span class="promo-tag">🔥 PROMO</span>
+      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
+      <h3>500 <span class="coin-icon">&#x1FA99;</span></h3>
+      <div class="countdown-box">&#9201; <span id="timer-henry500">--d --h --m --s</span></div>
+      <div class="pack-details">
+        <span class="pack-label">Contents:</span>
+        <ul>
+          <li>500 eFootball Coins &#x1FA99;</li>
+          <li>Pack Spécial Thierry Henry 🏆</li>
+          <li>Thierry Henry (113 OVR)</li>
+        </ul>
+      </div>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <strong>15 DT</strong>
+      </div>
+      <button class="btn-order" onclick="order('500 Coins — PROMO Thierry Henry (1 seul fois)', '15 DT')">ORDER NOW</button>
+    </div>
+
+    <!-- PROMO Henry 2 : 1500 Coins -->
+    <div class="card promo-card" id="henryCard1500">
+      <span class="promo-tag">🔥 PROMO</span>
+      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
+      <h3>1 500 <span class="coin-icon">&#x1FA99;</span></h3>
+      <div class="countdown-box">&#9201; <span id="timer-henry1500">--d --h --m --s</span></div>
+      <div class="pack-details">
+        <span class="pack-label">Contents:</span>
+        <ul>
+          <li>1 500 eFootball Coins &#x1FA99;</li>
+          <li>Pack Spécial Thierry Henry 🏆</li>
+          <li>Thierry Henry (113 OVR)</li>
+          <li>Bonus Spéciaux + Contenus Exclusifs</li>
+        </ul>
+      </div>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <strong>35 DT</strong>
+      </div>
+      <button class="btn-order" onclick="order('1500 Coins — PROMO Thierry Henry (1 seul fois)', '35 DT')">ORDER NOW</button>
+    </div>
+
+    <!-- PROMO Henry 3 : 4500 Coins -->
+    <div class="card promo-card" id="henryCard4500">
+      <span class="best-tag">Best Value</span>
+      <span class="promo-tag" style="top:14px;left:auto;right:14px;">🔥 PROMO</span>
+      <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(255,49,95,0.12);border:1px solid rgba(255,49,95,0.35);font-size:0.7rem;font-weight:900;color:#ff315f;text-transform:uppercase;width:fit-content;">✋ 1 seul fois</div>
+      <h3>4 500 <span class="coin-icon">&#x1FA99;</span></h3>
+      <div class="countdown-box">&#9201; <span id="timer-henry4500">--d --h --m --s</span></div>
+      <div class="pack-details">
+        <span class="pack-label">Contents:</span>
+        <ul>
+          <li>4 500 eFootball Coins &#x1FA99;</li>
+          <li>Pack Spécial Thierry Henry 🏆</li>
+          <li>Thierry Henry (113 OVR)</li>
+          <li>Bonus Spéciaux + Contenus Exclusifs</li>
+        </ul>
+      </div>
+      <div class="price has-promo">
+        <div class="price-label-row"><span class="price-label">Price</span><span class="promo-pill">PROMO</span></div>
+        <strong>95 DT</strong>
+      </div>
+      <button class="btn-order" onclick="order('4500 Coins — PROMO Thierry Henry (1 seul fois)', '95 DT')">ORDER NOW</button>
+    </div>
+
+  </div>
+  <!-- ══ FIN NOUVELLES OFFRES PROMO ══ -->
+
   <div class="section-divider starter-promo">
     <h2 id="starterTitle">Featured Starter Packs</h2>
     <p id="starterNote">Start strong with player sets, coins, and flexible local payment.</p>
@@ -845,6 +1064,8 @@ Thank you!`
 
   const deadlineNunezAlaba = new Date("2026-07-30T02:00:00+01:00").getTime();
   const deadlineMourinho = new Date("2026-08-06T02:00:00+01:00").getTime();
+  // ── PROMO THIERRY HENRY (expire 3 Dec 2026 ~01:27 UTC) ──
+  const deadlineHenryPromo = new Date("2026-12-03T01:27:00Z").getTime();
 
   function renderLiveTimers() {
     const currentTime = Date.now();
@@ -852,6 +1073,29 @@ Thank you!`
     displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-nunez"));
     displayCalculatedTime(deadlineNunezAlaba - currentTime, document.getElementById("timer-alaba"));
     displayCalculatedTime(deadlineMourinho - currentTime, document.getElementById("timer-mourinho"));
+
+    // Timers Thierry Henry Promo
+    displayCalculatedTime(deadlineHenryPromo - currentTime, document.getElementById("timer-henry500"));
+    displayCalculatedTime(deadlineHenryPromo - currentTime, document.getElementById("timer-henry1500"));
+    displayCalculatedTime(deadlineHenryPromo - currentTime, document.getElementById("timer-henry4500"));
+
+    // Mise à jour du timer global affiché dans le header
+    const globalTimerEl = document.getElementById("henryGlobalTimer");
+    if (globalTimerEl) {
+      const diff = deadlineHenryPromo - currentTime;
+      if (diff <= 0) {
+        const grid = document.getElementById("henryPromoGrid");
+        const section = document.getElementById("henryPromoSection");
+        if (grid) grid.style.display = "none";
+        if (section) section.style.display = "none";
+      } else {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        globalTimerEl.innerText = `${days}${langData[lang].d} ${hours}${langData[lang].h} ${minutes}${langData[lang].m} ${seconds}${langData[lang].s}`;
+      }
+    }
   }
 
   function displayCalculatedTime(distance, element) {
